@@ -19,9 +19,20 @@ def load_csv_to_db(csv_path: str, table_name: str):
     df.to_sql(table_name, engine, if_exists='replace', index=False)
     print(f"Данные из {csv_path} загружены в таблицу {table_name}")
 
-def fetch_data(table_name: str):
+def fetch_data(table_name: str, username: str = None, columns: list[str] = None):
     with engine.connect() as conn:
-        result = conn.execute(text(f"SELECT * FROM {table_name}"))
+        cols = ", ".join(columns) if columns else "*"
+        if username:
+            query = text(f"SELECT {cols} FROM {table_name} WHERE username = :username")
+            result = conn.execute(query, {"username": username})
+            print(f"Получены записи пользователя {username}")
+        else:
+            query = text(f"SELECT {cols} FROM {table_name}")
+            result = conn.execute(query)
+            print("Получены все записи из таблицы")
+
         rows = result.fetchall()
-        print(f"Получено {len(rows)} строк из таблицы {table_name}")
+        print(f"Количество строк: {len(rows)}")
         return rows
+
+
