@@ -9,12 +9,12 @@ INPUT_FILE = "users.csv"
 LANGUAGE_STATS_OUTPUT = "language_stats.csv"
 SOLVED_STATS_OUTPUT = "solved_stats.csv"
 MAX_RETRIES = 3
-INITIAL_BACKOFF = 1  # seconds
+INITIAL_BACKOFF = 0.1  # seconds
 
-START_INDEX = 0      # Starting index (0-based) in users.csv
-PROCESS_COUNT = 1000 # Number of users to process starting from START_INDEX
-THROTTLE_DELAY_SEC = 0.2 # Delay between processing each user to prevent rate limiting
-INITIAL_START_DELAY_SEC = 3600 # Delay the start of the entire script by 1 hour (3600 seconds)
+START_INDEX = 9626      # Starting index (0-based) in users.csv
+PROCESS_COUNT = 84540 # Number of users to process starting from START_INDEX
+THROTTLE_DELAY_SEC = 0.1 # Delay between processing each user to prevent rate limiting
+INITIAL_START_DELAY_SEC = 0 # Delay the start of the entire script by 1 hour (3600 seconds)
 
 # --- Helper Functions for API and Robustness ---
 
@@ -169,8 +169,8 @@ def main():
 
     try:
         # Open both CSV files for writing (once)
-        with open(LANGUAGE_STATS_OUTPUT, mode='w', newline='', encoding='utf-8') as lang_outfile, \
-             open(SOLVED_STATS_OUTPUT, mode='w', newline='', encoding='utf-8') as solved_outfile:
+        with open(LANGUAGE_STATS_OUTPUT, mode='a', newline='', encoding='utf-8') as lang_outfile, \
+             open(SOLVED_STATS_OUTPUT, mode='a', newline='', encoding='utf-8') as solved_outfile:
 
             # Initialize DictWriters
             lang_writer = csv.DictWriter(lang_outfile, fieldnames=lang_fieldnames, extrasaction='ignore')
@@ -194,6 +194,9 @@ def main():
                     # 2. Write to Solved Stats Table (Single-Row)
                     if solved_record:
                         solved_writer.writerow(solved_record)
+
+                    lang_outfile.flush()
+                    solved_outfile.flush()
                         
                     processed_count += 1
                     print(f"--> Data written for {username}. Total processed: {processed_count}")
