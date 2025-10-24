@@ -11,7 +11,7 @@ SOLVED_STATS_OUTPUT = "solved_stats.csv"
 MAX_RETRIES = 3
 INITIAL_BACKOFF = 0.1  # seconds
 
-START_INDEX = 13720      # Starting index (0-based) in users.csv
+START_INDEX = 29000      # Starting index (0-based) in users.csv
 PROCESS_COUNT = 84540 # Number of users to process starting from START_INDEX
 THROTTLE_DELAY_SEC = 0.1 # Delay between processing each user to prevent rate limiting
 INITIAL_START_DELAY_SEC = 0 # Delay the start of the entire script by 1 hour (3600 seconds)
