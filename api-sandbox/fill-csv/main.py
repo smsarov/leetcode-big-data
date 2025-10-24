@@ -11,7 +11,7 @@ SOLVED_STATS_OUTPUT = "solved_stats.csv"
 MAX_RETRIES = 3
 INITIAL_BACKOFF = 0.1  # seconds
 
-START_INDEX = 13200      # Starting index (0-based) in users.csv
+START_INDEX = 13720      # Starting index (0-based) in users.csv
 PROCESS_COUNT = 84540 # Number of users to process starting from START_INDEX
 THROTTLE_DELAY_SEC = 0.1 # Delay between processing each user to prevent rate limiting
 INITIAL_START_DELAY_SEC = 0 # Delay the start of the entire script by 1 hour (3600 seconds)
@@ -183,29 +183,33 @@ def main():
             # Process each user sequentially
             for username in usernames_to_process:
                 if username:
-                    print(f"Processing data for user: {username}")
-                    
-                    lang_records, solved_record = process_user_data(username)
-                    
-                    # 1. Write to Language Stats Table (Multi-Row)
-                    if lang_records:
-                        lang_writer.writerows(lang_records)
+                    try: 
+                        print(f"Processing data for user: {username}")
                         
-                    # 2. Write to Solved Stats Table (Single-Row)
-                    if solved_record:
-                        solved_writer.writerow(solved_record)
+                        lang_records, solved_record = process_user_data(username)
+                        
+                        # 1. Write to Language Stats Table (Multi-Row)
+                        if lang_records:
+                            lang_writer.writerows(lang_records)
+                            
+                        # 2. Write to Solved Stats Table (Single-Row)
+                        if solved_record:
+                            solved_writer.writerow(solved_record)
 
-                    lang_outfile.flush()
-                    solved_outfile.flush()
+                        lang_outfile.flush()
+                        solved_outfile.flush()
+                            
+                        processed_count += 1
+                        print(f"--> Data written for {username}. Total processed: {processed_count}")
                         
-                    processed_count += 1
-                    print(f"--> Data written for {username}. Total processed: {processed_count}")
-                    
-                    # Throttle the process to prevent rate-limiting errors
-                    time.sleep(THROTTLE_DELAY_SEC)
+                        # Throttle the process to prevent rate-limiting errors
+                        time.sleep(THROTTLE_DELAY_SEC)
+                    except Exception as e:
+                        print(f"An error occurred while parsing {username}")
+
 
     except Exception as e:
-        print(f"An error occurred during file writing or processing: {e}")
+        print("Script finished with unexpected reasons")
 
     print(f"\nProcessing finished. Successfully generated two tables with data for {processed_count} users.")
     print(f"- Language Stats Table: '{LANGUAGE_STATS_OUTPUT}'")
