@@ -1,8 +1,11 @@
-from db_connector import engine
+import sys
+import os
 import pandas as pd
 import os
-
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../db-connector')))
+from db_connector import engine
 base_dir = os.path.dirname(os.path.abspath(__file__))
+results_dir = os.path.abspath(os.path.join(base_dir, "../../results"))
 
 # 1. Самые популярные языки
 query1 = '''
@@ -12,7 +15,7 @@ GROUP BY languagename
 ORDER BY user_count DESC;
 '''
 df1 = pd.read_sql(query1, engine)
-df1.to_csv(os.path.join(base_dir, "popular_languages.csv"), index=False)
+df1.to_csv(os.path.join(results_dir, "popular_languages.csv"), index=False)
 print("popular_languages.csv сохранён")
 
 # 2. Самые популярные языки по странам
@@ -24,7 +27,7 @@ GROUP BY u.country, l.languagename
 ORDER BY u.country, user_count DESC;
 '''
 df2 = pd.read_sql(query2, engine)
-df2.to_csv(os.path.join(base_dir, "languages_by_country.csv"), index=False)
+df2.to_csv(os.path.join(results_dir, "languages_by_country.csv"), index=False)
 print("languages_by_country.csv сохранён")
 
 # 3. Среднее количество решённых задач по странам
@@ -39,5 +42,5 @@ GROUP BY u.country
 ORDER BY avg_solved DESC;
 '''
 df3 = pd.read_sql(query3, engine)
-df3.to_csv(os.path.join(base_dir, "avg_solved_by_country.csv"), index=False)
+df3.to_csv(os.path.join(results_dir, "avg_solved_by_country.csv"), index=False)
 print("avg_solved_by_country.csv сохранён")

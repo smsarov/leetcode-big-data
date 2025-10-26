@@ -1,16 +1,17 @@
 country,languagename,user_count
-Afghanistan,C++,5
-Afghanistan,Java,4
-Afghanistan,Python3,3
-Afghanistan,C,2
-Afghanistan,Python,2
+Afghanistan,C++,7
+Afghanistan,Java,6
+Afghanistan,Python3,4
+Afghanistan,Python,4
 Afghanistan,Bash,2
+Afghanistan,C,2
 Afghanistan,Go,2
-Afghanistan,PHP,1
-Afghanistan,JavaScript,1
 Afghanistan,Kotlin,1
 Afghanistan,MySQL,1
 Afghanistan,Pandas,1
+Afghanistan,PHP,1
+Afghanistan,JavaScript,1
+Afghanistan,C#,1
 Aland Islands,MySQL,2
 Aland Islands,C++,2
 Aland Islands,Python,2
@@ -18,129 +19,148 @@ Aland Islands,Python3,2
 Aland Islands,Rust,1
 Aland Islands,Java,1
 Aland Islands,Bash,1
-Algeria,Java,2
 Algeria,MySQL,2
-Algeria,JavaScript,1
+Algeria,Java,2
 Algeria,Python,1
+Algeria,Dart,1
+Algeria,JavaScript,1
 Algeria,Python3,1
 Algeria,Rust,1
-Algeria,Dart,1
 American Samoa,C++,2
-American Samoa,JavaScript,1
+American Samoa,C,1
 American Samoa,C#,1
 American Samoa,Java,1
-American Samoa,C,1
-Argentina,Python3,4
-Argentina,MySQL,3
+American Samoa,JavaScript,1
+Argentina,Python3,5
+Argentina,MySQL,4
 Argentina,C++,3
+Argentina,PostgreSQL,2
+Argentina,Pandas,2
 Argentina,Ruby,1
+Argentina,Rust,1
+Argentina,Python,1
 Argentina,C#,1
 Argentina,Java,1
 Argentina,JavaScript,1
-Argentina,Pandas,1
-Argentina,Rust,1
-Argentina,PostgreSQL,1
-Armenia,Python3,4
+Argentina,MS SQL Server,1
+Armenia,Python3,5
 Armenia,MySQL,4
 Armenia,PostgreSQL,3
 Armenia,C++,3
+Armenia,JavaScript,2
 Armenia,Java,2
 Armenia,Pandas,2
-Armenia,JavaScript,2
-Armenia,C#,1
-Armenia,Kotlin,1
 Armenia,MS SQL Server,1
-Armenia,TypeScript,1
+Armenia,Go,1
+Armenia,C#,1
+Armenia,Python,1
 Armenia,Bash,1
-Aruba,C++,1
+Armenia,TypeScript,1
+Armenia,Kotlin,1
+Aruba,Python3,2
 Aruba,Java,1
+Aruba,JavaScript,1
 Aruba,Kotlin,1
+Aruba,MySQL,1
+Aruba,Pandas,1
+Aruba,C++,1
 Aruba,Python,1
-Aruba,Python3,1
-Australia,C++,39
-Australia,Python3,39
-Australia,Java,27
-Australia,MySQL,22
-Australia,Python,22
-Australia,JavaScript,13
-Australia,Go,11
-Australia,TypeScript,8
-Australia,C#,8
-Australia,Bash,7
-Australia,Pandas,7
-Australia,C,7
+Australia,Python3,46
+Australia,C++,45
+Australia,Java,34
+Australia,MySQL,32
+Australia,Python,28
+Australia,JavaScript,19
+Australia,Go,12
+Australia,TypeScript,11
+Australia,C#,11
+Australia,Bash,10
+Australia,C,10
+Australia,Pandas,9
+Australia,PostgreSQL,6
 Australia,Rust,6
-Australia,PostgreSQL,4
+Australia,Kotlin,4
+Australia,Oracle,3
 Australia,Swift,3
-Australia,Kotlin,2
-Australia,Ruby,1
+Australia,MS SQL Server,2
 Australia,Dart,1
-Australia,MS SQL Server,1
+Australia,Ruby,1
+Austria,C++,1
 Austria,MySQL,1
 Austria,Python,1
 Austria,Python3,1
 Austria,TypeScript,1
-Austria,C++,1
-Azerbaijan,C++,4
+Azerbaijan,C++,6
+Azerbaijan,Python3,5
+Azerbaijan,C#,4
+Azerbaijan,MySQL,4
 Azerbaijan,Java,3
-Azerbaijan,Python3,3
-Azerbaijan,Go,2
 Azerbaijan,Bash,2
-Azerbaijan,MySQL,2
-Azerbaijan,C#,2
-Azerbaijan,TypeScript,1
-Azerbaijan,Python,1
+Azerbaijan,Go,2
+Azerbaijan,Python,2
 Azerbaijan,Oracle,1
+Azerbaijan,Pandas,1
+Azerbaijan,PostgreSQL,1
+Azerbaijan,TypeScript,1
+Azerbaijan,C,1
 Azerbaijan,JavaScript,1
-Bahrain,MySQL,1
-Bahrain,Python3,1
 Bahrain,Pandas,1
-Bangladesh,C++,124
-Bangladesh,MySQL,69
-Bangladesh,Python3,58
-Bangladesh,Java,57
-Bangladesh,JavaScript,54
-Bangladesh,Python,37
-Bangladesh,C#,26
-Bangladesh,C,22
-Bangladesh,Go,19
-Bangladesh,TypeScript,13
-Bangladesh,MS SQL Server,12
-Bangladesh,Pandas,8
-Bangladesh,PostgreSQL,7
+Bahrain,Python3,1
+Bahrain,MySQL,1
+Bangladesh,C++,170
+Bangladesh,MySQL,97
+Bangladesh,Python3,91
+Bangladesh,Java,77
+Bangladesh,JavaScript,76
+Bangladesh,Python,55
+Bangladesh,C,32
+Bangladesh,C#,30
+Bangladesh,Go,25
+Bangladesh,MS SQL Server,15
+Bangladesh,TypeScript,15
+Bangladesh,Pandas,11
+Bangladesh,PostgreSQL,10
 Bangladesh,Bash,7
-Bangladesh,Oracle,4
-Bangladesh,Rust,3
-Bangladesh,Kotlin,2
-Bangladesh,PHP,2
+Bangladesh,Rust,6
+Bangladesh,PHP,5
+Bangladesh,Oracle,5
+Bangladesh,Kotlin,4
+Bangladesh,Ruby,2
 Bangladesh,Swift,2
 Bangladesh,Elixir,1
 Bangladesh,Dart,1
-Belarus,C++,10
-Belarus,Java,8
-Belarus,MySQL,6
+Belarus,C++,11
+Belarus,Java,9
+Belarus,MySQL,8
+Belarus,Go,5
+Belarus,Python3,5
 Belarus,JavaScript,5
-Belarus,Go,4
-Belarus,C#,3
-Belarus,Python,3
-Belarus,Python3,3
+Belarus,Python,4
+Belarus,C#,4
 Belarus,Kotlin,3
-Belarus,MS SQL Server,2
+Belarus,MS SQL Server,3
+Belarus,C,2
 Belarus,PostgreSQL,2
-Belarus,Bash,1
-Belarus,C,1
+Belarus,TypeScript,1
 Belarus,Oracle,1
 Belarus,Rust,1
 Belarus,Scala,1
-Belarus,TypeScript,1
-Belgium,Python3,4
-Belgium,Java,3
-Belgium,MySQL,3
+Belarus,Bash,1
+Belgium,Python3,6
+Belgium,MySQL,5
+Belgium,Java,5
+Belgium,Python,4
+Belgium,JavaScript,3
+Belgium,C++,2
+Belgium,C#,2
 Belgium,TypeScript,2
-Belgium,JavaScript,2
-Belgium,Python,2
-Belgium,C#,1
+Belgium,C,1
+Belgium,Dart,1
 Belgium,Go,1
+Belgium,MS SQL Server,1
+Belgium,Oracle,1
+Belgium,Pandas,1
+Belgium,PostgreSQL,1
 Belgium,Rust,1
 Bhutan,C,1
 Bhutan,C++,1
@@ -152,237 +172,254 @@ Bolivia,C++,3
 Bolivia,JavaScript,2
 Bolivia,Bash,1
 Bolivia,Python3,1
-Brazil,C++,35
-Brazil,Python3,25
-Brazil,JavaScript,17
-Brazil,Java,16
-Brazil,MySQL,15
-Brazil,Python,10
-Brazil,Go,8
-Brazil,TypeScript,5
+Brazil,C++,39
+Brazil,Python3,30
+Brazil,MySQL,19
+Brazil,Java,19
+Brazil,JavaScript,18
+Brazil,Python,12
+Brazil,Go,9
+Brazil,TypeScript,6
+Brazil,Bash,4
 Brazil,C#,3
-Brazil,C,3
 Brazil,Pandas,3
-Brazil,Bash,3
+Brazil,C,3
 Brazil,Rust,2
-Brazil,Scala,1
+Brazil,MS SQL Server,1
 Brazil,Kotlin,1
+Brazil,PostgreSQL,1
+Brazil,Scala,1
 Brazil,Oracle,1
 Brazil,Swift,1
-Bulgaria,C++,5
 Bulgaria,Python3,5
-Bulgaria,Java,4
+Bulgaria,C++,5
+Bulgaria,Java,5
 Bulgaria,JavaScript,4
+Bulgaria,MySQL,4
+Bulgaria,Bash,3
 Bulgaria,Python,3
-Bulgaria,MySQL,3
-Bulgaria,Bash,2
-Bulgaria,Pandas,2
 Bulgaria,Go,2
-Bulgaria,TypeScript,1
-Bulgaria,C#,1
+Bulgaria,C#,2
+Bulgaria,Pandas,2
+Bulgaria,PostgreSQL,1
 Bulgaria,Kotlin,1
 Bulgaria,MS SQL Server,1
 Bulgaria,Oracle,1
-Bulgaria,PostgreSQL,1
-Canada,Python3,234
-Canada,C++,223
-Canada,Java,179
-Canada,MySQL,156
-Canada,Python,152
-Canada,JavaScript,86
-Canada,C,69
-Canada,Go,51
-Canada,Bash,42
-Canada,TypeScript,40
-Canada,C#,29
-Canada,Pandas,29
-Canada,Rust,23
+Bulgaria,TypeScript,1
+Cameroon,Python3,1
+Cameroon,JavaScript,1
+Canada,Python3,288
+Canada,C++,258
+Canada,Java,227
+Canada,Python,193
+Canada,MySQL,188
+Canada,JavaScript,109
+Canada,C,77
+Canada,Go,54
+Canada,TypeScript,48
+Canada,Bash,47
+Canada,C#,39
+Canada,Pandas,34
+Canada,Rust,26
+Canada,MS SQL Server,22
 Canada,Kotlin,16
-Canada,MS SQL Server,15
-Canada,Scala,13
+Canada,Scala,15
+Canada,Ruby,12
 Canada,Racket,10
-Canada,Ruby,9
-Canada,Swift,7
-Canada,PostgreSQL,6
+Canada,Swift,10
+Canada,PostgreSQL,8
+Canada,Oracle,7
 Canada,PHP,5
-Canada,Oracle,5
 Canada,Dart,3
 Canada,Elixir,2
 Canada,Erlang,1
+Cayman Islands,Java,1
+Cayman Islands,JavaScript,1
+Cayman Islands,C++,1
 Chile,Python3,5
 Chile,C++,4
 Chile,MySQL,4
-Chile,JavaScript,3
 Chile,Bash,3
+Chile,JavaScript,3
 Chile,Python,2
 Chile,C,2
+Chile,Oracle,1
+Chile,C#,1
+Chile,Go,1
+Chile,Java,1
 Chile,Kotlin,1
 Chile,MS SQL Server,1
-Chile,C#,1
-Chile,Oracle,1
 Chile,PHP,1
 Chile,Rust,1
-Chile,Java,1
 Chile,TypeScript,1
-Chile,Go,1
-China,C++,419
-China,Java,326
-China,Python3,292
-China,Python,274
-China,MySQL,273
-China,Bash,122
-China,JavaScript,102
-China,C,100
-China,Go,90
-China,Rust,39
-China,C#,36
-China,Scala,20
-China,Kotlin,20
-China,MS SQL Server,20
-China,Pandas,18
-China,TypeScript,17
-China,Swift,16
-China,Ruby,11
-China,Oracle,9
+China,C++,517
+China,Java,411
+China,Python3,345
+China,Python,338
+China,MySQL,323
+China,Bash,147
+China,C,139
+China,JavaScript,117
+China,Go,109
+China,Rust,41
+China,C#,40
+China,Kotlin,23
+China,Scala,23
+China,MS SQL Server,22
+China,Pandas,20
+China,TypeScript,19
+China,Swift,17
+China,Ruby,12
+China,Oracle,11
 China,PHP,5
 China,PostgreSQL,4
 China,Elixir,2
 China,Racket,2
 Christmas Island,Java,4
-Christmas Island,MySQL,2
 Christmas Island,C++,2
+Christmas Island,MySQL,2
 Christmas Island,Python,2
 Christmas Island,Python3,2
 Christmas Island,Go,1
 Christmas Island,Bash,1
+Colombia,C++,5
 Colombia,Java,4
-Colombia,C++,4
 Colombia,Python3,3
-Colombia,Go,2
+Colombia,Python,2
 Colombia,Ruby,2
-Colombia,Bash,1
-Colombia,Rust,1
+Colombia,Go,2
 Colombia,C,1
+Colombia,Bash,1
 Colombia,JavaScript,1
-Colombia,Python,1
-Costa Rica,Java,1
-Costa Rica,C++,1
-Costa Rica,Python,1
+Colombia,Rust,1
+Costa Rica,C++,2
 Costa Rica,Python3,1
-Croatia,Python3,3
+Costa Rica,Java,1
+Costa Rica,Python,1
+Croatia,Python3,6
+Croatia,MySQL,5
+Croatia,JavaScript,4
+Croatia,C++,4
+Croatia,Bash,3
+Croatia,Java,3
+Croatia,Python,3
+Croatia,C,2
 Croatia,MS SQL Server,2
-Croatia,MySQL,2
 Croatia,Pandas,2
 Croatia,TypeScript,2
-Croatia,Bash,2
-Croatia,C++,2
-Croatia,Java,2
-Croatia,JavaScript,2
-Croatia,C,1
 Croatia,PostgreSQL,1
-Croatia,Python,1
+Croatia,Rust,1
+Croatia,Swift,1
+Croatia,Kotlin,1
+Croatia,Go,1
+Croatia,C#,1
 Croatia,Oracle,1
-Cuba,C++,2
+Croatia,PHP,1
+Cuba,JavaScript,2
 Cuba,Python3,2
-Cuba,TypeScript,1
+Cuba,C++,2
+Cuba,MySQL,1
 Cuba,Ruby,1
+Cuba,Rust,1
+Cuba,TypeScript,1
 Cuba,Go,1
 Cuba,Java,1
-Cuba,JavaScript,1
-Cuba,MySQL,1
-Cuba,Rust,1
-Cyprus,C++,1
+Cyprus,Python3,2
+Cyprus,JavaScript,2
 Cyprus,Go,1
-Cyprus,JavaScript,1
+Cyprus,Java,1
 Cyprus,MySQL,1
 Cyprus,PostgreSQL,1
-Cyprus,Python3,1
+Cyprus,C,1
 Cyprus,Rust,1
+Cyprus,C++,1
+Czechia,Python3,5
+Czechia,C++,4
+Czechia,Java,4
+Czechia,JavaScript,4
 Czechia,Python,4
-Czechia,Python3,4
+Czechia,MySQL,3
 Czechia,C#,3
-Czechia,Java,3
-Czechia,JavaScript,3
-Czechia,C++,3
 Czechia,PHP,2
-Czechia,MySQL,2
+Czechia,Bash,2
 Czechia,TypeScript,2
-Czechia,Bash,1
-Czechia,Go,1
-Czechia,C,1
 Czechia,Kotlin,1
-Democratic Republic of the Congo,C++,1
+Czechia,C,1
+Czechia,Go,1
 Democratic Republic of the Congo,Python3,1
-Denmark,JavaScript,2
-Denmark,Python3,2
+Democratic Republic of the Congo,C++,1
 Denmark,Python,2
+Denmark,Python3,2
 Denmark,Bash,2
-Denmark,Java,2
+Denmark,JavaScript,2
 Denmark,MySQL,2
+Denmark,C++,2
+Denmark,Java,2
 Denmark,Ruby,1
-Denmark,C++,1
 Denmark,Pandas,1
 Denmark,PostgreSQL,1
+Dominica,Java,1
+Dominica,C++,1
+Dominica,MySQL,1
 Dominican Republic,Java,2
-Dominican Republic,Python3,2
 Dominican Republic,C++,2
+Dominican Republic,Python3,2
 Dominican Republic,Python,1
-Egypt,C++,72
-Egypt,MySQL,53
-Egypt,Java,46
-Egypt,Python3,36
-Egypt,JavaScript,32
-Egypt,Python,28
-Egypt,MS SQL Server,23
-Egypt,C#,15
-Egypt,TypeScript,8
-Egypt,PostgreSQL,8
-Egypt,Go,7
-Egypt,Oracle,5
-Egypt,C,5
+Egypt,C++,93
+Egypt,MySQL,65
+Egypt,Java,61
+Egypt,Python3,48
+Egypt,JavaScript,36
+Egypt,Python,34
+Egypt,MS SQL Server,24
+Egypt,C#,19
+Egypt,TypeScript,10
+Egypt,PostgreSQL,9
+Egypt,Go,8
+Egypt,C,6
+Egypt,Pandas,5
 Egypt,PHP,5
-Egypt,Kotlin,4
-Egypt,Pandas,4
+Egypt,Oracle,5
 Egypt,Bash,4
-Egypt,Rust,3
+Egypt,Rust,4
+Egypt,Kotlin,4
+Egypt,Dart,3
+Egypt,Ruby,2
 Egypt,Swift,2
-Egypt,Dart,2
 Estonia,Java,1
-Estonia,PHP,1
 Estonia,Python3,1
 Estonia,TypeScript,1
 Estonia,C++,1
+Estonia,Bash,1
 Estonia,JavaScript,1
 Estonia,Kotlin,1
 Estonia,MS SQL Server,1
-Estonia,Bash,1
 Estonia,MySQL,1
-Ethiopia,Python3,10
-Ethiopia,C++,9
-Ethiopia,JavaScript,5
-Ethiopia,Python,5
+Estonia,PHP,1
+Ethiopia,Python3,16
+Ethiopia,C++,13
+Ethiopia,JavaScript,10
+Ethiopia,Python,8
+Ethiopia,Java,6
+Ethiopia,MySQL,6
+Ethiopia,C#,5
 Ethiopia,C,4
-Ethiopia,MySQL,3
-Ethiopia,C#,3
-Ethiopia,Java,2
-Ethiopia,Pandas,2
-Ethiopia,TypeScript,1
-Ethiopia,Bash,1
-Ethiopia,Dart,1
-Ethiopia,Go,1
-Ethiopia,Rust,1
+Ethiopia,Pandas,4
+Ethiopia,Go,3
+Ethiopia,TypeScript,2
+Ethiopia,Bash,2
+Ethiopia,Dart,2
 Ethiopia,Scala,1
+Ethiopia,Rust,1
+Fiji,Python3,1
 Fiji,Bash,1
-Fiji,Python,1
-Fiji,C++,1
 Fiji,Java,1
 Fiji,MySQL,1
-Fiji,Python3,1
+Fiji,Python,1
+Fiji,C++,1
 Finland,Python,2
 Finland,Python3,2
 Finland,MySQL,2
-Finland,PostgreSQL,1
-Finland,Racket,1
 Finland,Ruby,1
 Finland,Rust,1
 Finland,Scala,1
@@ -395,26 +432,29 @@ Finland,Elixir,1
 Finland,Erlang,1
 Finland,Go,1
 Finland,JavaScript,1
-France,Python3,18
-France,C++,18
-France,MySQL,15
-France,Python,9
-France,Java,7
-France,JavaScript,5
-France,C,4
+Finland,PostgreSQL,1
+Finland,Racket,1
+France,Python3,22
+France,C++,21
+France,MySQL,17
+France,Python,12
+France,Java,12
+France,C,6
+France,JavaScript,6
+France,TypeScript,4
+France,Go,4
 France,Bash,4
-France,Go,3
 France,PostgreSQL,3
-France,TypeScript,3
 France,Pandas,3
-France,MS SQL Server,2
+France,MS SQL Server,3
 France,Oracle,2
-France,Scala,2
 France,Kotlin,2
+France,Scala,2
 France,C#,2
 France,PHP,1
 France,Rust,1
-French Polynesia,Ruby,1
+France,Ruby,1
+French Polynesia,Rust,1
 French Polynesia,Bash,1
 French Polynesia,C++,1
 French Polynesia,Go,1
@@ -424,847 +464,942 @@ French Polynesia,Kotlin,1
 French Polynesia,MySQL,1
 French Polynesia,Python,1
 French Polynesia,Python3,1
-French Polynesia,Rust,1
-Georgia,C++,8
-Georgia,Python3,7
-Georgia,Java,7
+French Polynesia,Ruby,1
+Georgia,Java,10
+Georgia,Python3,10
+Georgia,MySQL,9
+Georgia,C++,9
+Georgia,Python,8
 Georgia,JavaScript,6
-Georgia,Python,6
-Georgia,MySQL,6
 Georgia,Go,4
+Georgia,C#,4
+Georgia,Bash,3
 Georgia,C,3
-Georgia,C#,3
-Georgia,TypeScript,2
-Georgia,Oracle,2
+Georgia,Oracle,3
+Georgia,PostgreSQL,2
+Georgia,MS SQL Server,2
 Georgia,Rust,2
-Georgia,Bash,2
+Georgia,TypeScript,2
+Georgia,Pandas,1
 Georgia,Ruby,1
-Georgia,PostgreSQL,1
-Georgia,MS SQL Server,1
-Germany,Python3,27
-Germany,C++,24
-Germany,Java,19
-Germany,MySQL,18
-Germany,Python,12
-Germany,JavaScript,8
-Germany,Bash,6
-Germany,Rust,5
-Germany,C#,5
-Germany,Go,5
-Germany,C,4
-Germany,PostgreSQL,3
-Germany,Kotlin,3
-Germany,Pandas,2
-Germany,MS SQL Server,2
-Germany,Scala,1
-Germany,Dart,1
+Germany,Python3,38
+Germany,Java,30
+Germany,C++,29
+Germany,MySQL,27
+Germany,Python,17
+Germany,JavaScript,12
+Germany,Bash,8
+Germany,Go,7
+Germany,PostgreSQL,7
+Germany,Pandas,7
+Germany,C#,6
+Germany,Rust,6
+Germany,C,5
+Germany,MS SQL Server,4
+Germany,Kotlin,4
+Germany,Scala,2
+Germany,TypeScript,2
 Germany,Oracle,1
+Germany,Dart,1
 Germany,Swift,1
-Greece,C++,3
-Greece,Python,2
-Greece,Python3,2
+Germany,Ruby,1
+Ghana,C#,1
+Ghana,C++,1
+Ghana,JavaScript,1
+Ghana,Python,1
+Ghana,Python3,1
+Greece,C++,4
+Greece,Python,3
+Greece,Python3,3
+Greece,MySQL,2
+Greece,Java,2
 Greece,JavaScript,2
 Greece,TypeScript,1
+Greece,C#,1
 Greece,Bash,1
+Greece,Pandas,1
 Greece,C,1
-Greece,Java,1
-Greece,MySQL,1
-Greenland,C++,1
 Greenland,Java,1
+Greenland,C++,1
 Greenland,JavaScript,1
 Greenland,Oracle,1
 Greenland,Python3,1
 Greenland,TypeScript,1
-Hong Kong,C++,48
-Hong Kong,Python3,38
-Hong Kong,MySQL,28
-Hong Kong,Java,27
-Hong Kong,Python,26
-Hong Kong,JavaScript,16
+Hong Kong,C++,55
+Hong Kong,Python3,42
+Hong Kong,Python,30
+Hong Kong,MySQL,30
+Hong Kong,Java,29
+Hong Kong,JavaScript,18
 Hong Kong,C,12
 Hong Kong,Go,10
 Hong Kong,TypeScript,9
-Hong Kong,Pandas,7
+Hong Kong,Pandas,8
 Hong Kong,Bash,6
 Hong Kong,Rust,5
 Hong Kong,C#,5
 Hong Kong,Kotlin,5
 Hong Kong,Scala,4
 Hong Kong,Oracle,3
-Hong Kong,Dart,3
-Hong Kong,MS SQL Server,3
-Hong Kong,Ruby,3
 Hong Kong,Swift,3
+Hong Kong,MS SQL Server,3
+Hong Kong,Dart,3
+Hong Kong,Ruby,3
 Hong Kong,PHP,2
 Hong Kong,Elixir,1
 Hong Kong,PostgreSQL,1
-Hungary,C++,4
+Hungary,C++,5
+Hungary,TypeScript,2
+Hungary,MySQL,2
+Hungary,Python,2
+Hungary,Python3,2
 Hungary,Go,2
-Hungary,Python,1
-Hungary,Java,1
-Hungary,JavaScript,1
-Hungary,MySQL,1
-Hungary,Python3,1
-Hungary,TypeScript,1
-India,C++,5670
-India,Java,4062
-India,MySQL,3926
-India,Python3,3105
-India,JavaScript,2173
-India,Python,1775
-India,C,980
-India,Go,449
-India,Pandas,444
-India,Bash,322
-India,TypeScript,278
-India,Oracle,238
-India,C#,217
-India,PostgreSQL,207
-India,MS SQL Server,197
-India,Kotlin,148
-India,Rust,140
-India,Ruby,73
-India,Swift,48
-India,PHP,45
-India,Dart,40
-India,Scala,32
-India,Elixir,8
-India,Racket,5
+Hungary,Java,2
+Hungary,JavaScript,2
+Hungary,C,1
+Hungary,PHP,1
+Hungary,Bash,1
+India,C++,8209
+India,Java,6196
+India,MySQL,5624
+India,Python3,4549
+India,JavaScript,3114
+India,Python,2668
+India,C,1548
+India,Pandas,707
+India,Go,558
+India,Bash,469
+India,TypeScript,381
+India,Oracle,329
+India,C#,314
+India,PostgreSQL,294
+India,MS SQL Server,273
+India,Kotlin,197
+India,Rust,173
+India,Ruby,86
+India,PHP,63
+India,Swift,62
+India,Dart,52
+India,Scala,45
+India,Elixir,9
+India,Racket,6
 India,Erlang,3
-Indonesia,C++,33
-Indonesia,Python3,26
-Indonesia,Java,23
-Indonesia,MySQL,22
-Indonesia,Python,20
-Indonesia,Go,14
-Indonesia,JavaScript,11
+Indonesia,C++,36
+Indonesia,Python3,33
+Indonesia,Java,31
+Indonesia,MySQL,28
+Indonesia,Python,21
+Indonesia,Go,19
+Indonesia,JavaScript,15
+Indonesia,Rust,8
+Indonesia,Kotlin,8
+Indonesia,TypeScript,7
 Indonesia,PostgreSQL,7
-Indonesia,Kotlin,7
-Indonesia,Rust,5
-Indonesia,C,5
+Indonesia,C,6
+Indonesia,Elixir,4
+Indonesia,C#,4
 Indonesia,Pandas,4
-Indonesia,C#,3
-Indonesia,Elixir,3
-Indonesia,TypeScript,3
+Indonesia,Scala,3
+Indonesia,Bash,3
+Indonesia,Dart,3
 Indonesia,MS SQL Server,2
-Indonesia,Scala,2
-Indonesia,Bash,1
-Indonesia,Dart,1
-Indonesia,Erlang,1
-Indonesia,Ruby,1
+Indonesia,PHP,2
+Indonesia,Racket,2
+Indonesia,Ruby,2
 Indonesia,Swift,1
+Indonesia,Erlang,1
 Iran,C++,4
-Iran,Python3,3
-Iran,Go,2
+Iran,Python3,4
+Iran,JavaScript,2
 Iran,MySQL,2
-Iran,Java,1
-Iran,JavaScript,1
-Iran,Pandas,1
+Iran,Go,2
 Iran,Bash,1
 Iran,C,1
-Ireland,C++,12
-Ireland,Python3,11
-Ireland,Java,10
+Iran,Java,1
+Iran,Pandas,1
+Iran,Python,1
+Iraq,C++,1
+Iraq,Java,1
+Iraq,Pandas,1
+Iraq,Python,1
+Ireland,C++,14
+Ireland,Java,14
+Ireland,Python3,14
+Ireland,Python,12
+Ireland,JavaScript,10
 Ireland,MySQL,9
-Ireland,Python,8
-Ireland,JavaScript,7
 Ireland,Rust,5
 Ireland,Bash,4
 Ireland,Go,4
+Ireland,C#,4
 Ireland,TypeScript,3
 Ireland,Swift,2
-Ireland,C,2
-Ireland,C#,2
-Ireland,Kotlin,2
-Ireland,Oracle,2
 Ireland,Scala,2
-Ireland,PHP,1
-Ireland,Pandas,1
+Ireland,C,2
+Ireland,Oracle,2
+Ireland,Kotlin,2
 Ireland,MS SQL Server,1
+Ireland,Pandas,1
+Ireland,PHP,1
 Ireland,Ruby,1
 Isle of Man,Python3,1
+Israel,C++,5
 Israel,Python3,4
-Israel,C++,4
 Israel,Java,2
-Israel,Pandas,1
-Israel,Python,1
+Israel,Python,2
 Israel,C#,1
 Israel,JavaScript,1
 Israel,Kotlin,1
+Israel,Pandas,1
 Israel,Rust,1
 Israel,Bash,1
 Israel,C,1
-Italy,C++,7
-Italy,Python3,4
-Italy,Java,4
-Italy,MySQL,3
-Italy,C,2
+Italy,C++,13
+Italy,Python3,9
+Italy,MySQL,7
+Italy,Java,6
+Italy,JavaScript,5
+Italy,Python,3
 Italy,Oracle,2
-Italy,JavaScript,2
+Italy,Rust,2
+Italy,C,2
 Italy,Kotlin,1
 Italy,Bash,1
 Italy,C#,1
-Italy,Python,1
-Italy,Rust,1
+Italy,Pandas,1
+Italy,PostgreSQL,1
 Italy,TypeScript,1
-Japan,C++,116
-Japan,Python3,91
-Japan,MySQL,69
-Japan,Java,56
-Japan,Python,47
-Japan,JavaScript,31
-Japan,Bash,26
-Japan,Rust,19
-Japan,Go,18
+Japan,C++,126
+Japan,Python3,100
+Japan,MySQL,73
+Japan,Java,63
+Japan,Python,52
+Japan,JavaScript,35
+Japan,Bash,30
+Japan,Rust,21
+Japan,Go,20
 Japan,Kotlin,16
-Japan,Ruby,11
-Japan,C#,10
+Japan,Ruby,12
+Japan,C#,11
+Japan,TypeScript,10
 Japan,C,9
-Japan,TypeScript,8
 Japan,Pandas,8
 Japan,MS SQL Server,5
+Japan,PostgreSQL,5
 Japan,Scala,5
-Japan,PostgreSQL,4
 Japan,Swift,3
-Japan,Oracle,1
+Japan,Oracle,2
 Japan,Dart,1
 Japan,PHP,1
-Kazakhstan,C++,48
-Kazakhstan,Java,32
-Kazakhstan,MySQL,30
-Kazakhstan,Python3,29
-Kazakhstan,Python,21
-Kazakhstan,Go,12
-Kazakhstan,JavaScript,12
-Kazakhstan,Pandas,7
-Kazakhstan,PostgreSQL,6
+Kazakhstan,C++,60
+Kazakhstan,Python3,40
+Kazakhstan,MySQL,40
+Kazakhstan,Java,39
+Kazakhstan,Python,23
+Kazakhstan,Go,18
+Kazakhstan,JavaScript,17
+Kazakhstan,Pandas,8
+Kazakhstan,PostgreSQL,7
+Kazakhstan,C,6
+Kazakhstan,TypeScript,6
+Kazakhstan,Oracle,5
 Kazakhstan,C#,5
-Kazakhstan,TypeScript,5
-Kazakhstan,Oracle,4
-Kazakhstan,C,4
+Kazakhstan,Swift,5
+Kazakhstan,Bash,4
 Kazakhstan,Kotlin,3
-Kazakhstan,Bash,2
+Kazakhstan,Rust,3
+Kazakhstan,MS SQL Server,2
 Kazakhstan,Scala,2
-Kazakhstan,Swift,2
-Kazakhstan,MS SQL Server,1
-Kazakhstan,Rust,1
 Kazakhstan,Ruby,1
-Kenya,Java,1
-Kenya,JavaScript,1
 Kenya,MySQL,1
+Kenya,PHP,1
 Kenya,Python,1
 Kenya,Bash,1
 Kenya,C++,1
-Kyrgyzstan,JavaScript,3
-Kyrgyzstan,Python3,2
-Kyrgyzstan,MySQL,2
+Kenya,Java,1
+Kenya,JavaScript,1
+Kyrgyzstan,Python3,6
+Kyrgyzstan,JavaScript,5
+Kyrgyzstan,MySQL,4
+Kyrgyzstan,C++,3
+Kyrgyzstan,Java,3
+Kyrgyzstan,TypeScript,2
+Kyrgyzstan,Python,2
+Kyrgyzstan,C#,2
+Kyrgyzstan,Go,1
+Kyrgyzstan,Oracle,1
 Kyrgyzstan,Swift,1
-Kyrgyzstan,C#,1
-Kyrgyzstan,TypeScript,1
-Kyrgyzstan,C++,1
-Kyrgyzstan,Java,1
+Laos,C++,1
 Laos,Java,1
 Laos,MySQL,1
 Laos,Python,1
-Laos,C++,1
 Laos,Python3,1
+Latvia,Go,2
 Latvia,C++,2
 Latvia,C,1
-Latvia,Go,1
 Latvia,Java,1
 Latvia,MySQL,1
 Latvia,Python3,1
+Latvia,Ruby,1
 Latvia,Rust,1
+Latvia,TypeScript,1
 Lebanon,Java,2
 Lebanon,C++,2
 Lebanon,MySQL,2
-Lebanon,Python3,1
-Lebanon,C,1
 Lebanon,Pandas,1
 Lebanon,Python,1
-Lithuania,C++,1
-Lithuania,Python,1
-Lithuania,Python3,1
+Lebanon,C,1
+Lebanon,Python3,1
+Lithuania,Python3,3
+Lithuania,MySQL,2
+Lithuania,Python,2
+Lithuania,C++,2
+Lithuania,Pandas,2
+Lithuania,MS SQL Server,1
 Lithuania,Java,1
+Lithuania,JavaScript,1
+Lithuania,TypeScript,1
+Luxembourg,Java,1
+Luxembourg,JavaScript,1
+Macao,C++,1
+Macao,Go,1
+Macao,Java,1
+Macao,JavaScript,1
+Macao,MySQL,1
+Macao,Python3,1
+Macao,Bash,1
+Macao,Rust,1
+Macao,TypeScript,1
 Macedonia,C++,3
+Macedonia,Java,2
 Macedonia,MySQL,2
 Macedonia,PostgreSQL,2
 Macedonia,Python,2
 Macedonia,Python3,2
-Macedonia,Java,2
-Macedonia,TypeScript,1
-Macedonia,C#,1
-Macedonia,JavaScript,1
-Macedonia,MS SQL Server,1
 Macedonia,Oracle,1
 Macedonia,Rust,1
 Macedonia,Scala,1
+Macedonia,C#,1
+Macedonia,JavaScript,1
+Macedonia,MS SQL Server,1
+Macedonia,TypeScript,1
+Madagascar,Python3,1
 Madagascar,Bash,1
+Madagascar,C++,1
 Madagascar,Java,1
 Madagascar,JavaScript,1
 Madagascar,MySQL,1
 Madagascar,Pandas,1
-Madagascar,Python3,1
 Madagascar,TypeScript,1
-Madagascar,C++,1
-Malaysia,C++,8
-Malaysia,Python3,7
-Malaysia,Python,4
-Malaysia,JavaScript,4
-Malaysia,Java,4
-Malaysia,MySQL,2
-Malaysia,TypeScript,1
-Malaysia,Kotlin,1
-Mexico,C++,14
-Mexico,Python3,8
-Mexico,Java,7
-Mexico,JavaScript,3
-Mexico,MySQL,3
+Malaysia,Python3,10
+Malaysia,C++,9
+Malaysia,JavaScript,5
+Malaysia,Python,5
+Malaysia,Java,5
+Malaysia,MySQL,3
+Malaysia,TypeScript,2
+Malaysia,Kotlin,2
+Malaysia,Go,1
+Malaysia,Pandas,1
+Malaysia,PHP,1
+Malaysia,C#,1
+Malaysia,C,1
+Malaysia,Ruby,1
+Malaysia,Rust,1
+Malaysia,Bash,1
+Mexico,C++,17
+Mexico,Python3,11
+Mexico,Java,9
+Mexico,MySQL,5
+Mexico,JavaScript,5
+Mexico,Go,4
+Mexico,Python,4
+Mexico,C#,3
+Mexico,Rust,3
 Mexico,TypeScript,2
-Mexico,Python,2
-Mexico,Rust,2
-Mexico,Go,2
-Mexico,C#,1
 Mexico,Bash,1
+Mexico,Kotlin,1
 Mexico,Pandas,1
 Moldova,Python3,2
 Moldova,C++,2
 Moldova,Java,1
-Moldova,MySQL,1
-Moldova,TypeScript,1
 Moldova,JavaScript,1
+Moldova,TypeScript,1
+Moldova,MySQL,1
 Moldova,Go,1
 Monaco,C++,2
+Monaco,Pandas,1
+Monaco,Bash,1
+Monaco,C,1
 Monaco,Java,1
+Monaco,MySQL,1
 Monaco,Python,1
 Monaco,Python3,1
-Monaco,C,1
-Monaco,MySQL,1
-Monaco,Bash,1
-Monaco,Pandas,1
-Mongolia,Java,6
-Mongolia,C++,6
+Mongolia,Java,9
+Mongolia,C++,8
+Mongolia,MySQL,5
+Mongolia,Python3,5
 Mongolia,Python,5
-Mongolia,MySQL,4
-Mongolia,Python3,4
-Mongolia,JavaScript,2
+Mongolia,JavaScript,3
+Mongolia,TypeScript,2
+Mongolia,Pandas,1
+Mongolia,Go,1
+Mongolia,C,1
+Mongolia,Ruby,1
 Mongolia,Rust,1
 Mongolia,Bash,1
-Mongolia,C,1
-Mongolia,Go,1
-Mongolia,Ruby,1
-Mongolia,TypeScript,1
 Montenegro,MySQL,1
-Montenegro,C++,1
-Montenegro,Swift,1
 Montenegro,Python3,1
-Morocco,MySQL,7
-Morocco,C++,6
-Morocco,Python3,6
-Morocco,Java,6
-Morocco,C,4
-Morocco,JavaScript,3
-Morocco,Python,3
-Morocco,C#,2
+Montenegro,Swift,1
+Montenegro,C++,1
+Morocco,MySQL,10
+Morocco,Python3,9
+Morocco,C++,8
+Morocco,Java,8
+Morocco,JavaScript,7
+Morocco,C,5
+Morocco,Python,4
+Morocco,Pandas,3
 Morocco,Bash,2
-Morocco,Pandas,2
-Morocco,Rust,1
+Morocco,C#,2
+Morocco,Go,2
+Morocco,Rust,2
 Morocco,Dart,1
 Morocco,PostgreSQL,1
 Mozambique,Python3,2
 Mozambique,C++,2
+Mozambique,Java,1
+Mozambique,JavaScript,1
 Mozambique,MySQL,1
 Mozambique,Pandas,1
-Mozambique,JavaScript,1
-Mozambique,Java,1
-Nepal,C++,7
-Nepal,Java,6
-Nepal,Python3,5
-Nepal,C,5
-Nepal,JavaScript,4
-Nepal,MySQL,4
-Nepal,Python,3
-Nepal,Go,2
+Nepal,Java,12
+Nepal,C++,11
+Nepal,Python3,8
+Nepal,JavaScript,7
+Nepal,MySQL,7
+Nepal,Python,6
+Nepal,C,6
+Nepal,Go,3
+Nepal,MS SQL Server,2
 Nepal,Rust,2
+Nepal,Oracle,2
 Nepal,TypeScript,1
-Nepal,Oracle,1
-Netherlands,C++,17
+Nepal,Kotlin,1
+Nepal,Pandas,1
+Nepal,Bash,1
+Netherlands,C++,18
 Netherlands,Python3,15
 Netherlands,Java,14
-Netherlands,MySQL,13
+Netherlands,MySQL,14
 Netherlands,Python,9
 Netherlands,Go,9
 Netherlands,JavaScript,9
 Netherlands,Rust,7
 Netherlands,C,6
-Netherlands,MS SQL Server,4
-Netherlands,C#,4
 Netherlands,Bash,4
+Netherlands,C#,4
+Netherlands,MS SQL Server,4
 Netherlands,Kotlin,3
 Netherlands,TypeScript,3
+Netherlands,Scala,2
 Netherlands,Pandas,2
 Netherlands,Swift,2
-Netherlands,Scala,2
-Netherlands,PHP,1
 Netherlands,Dart,1
+Netherlands,PHP,1
 Netherlands,Racket,1
-New Zealand,C++,13
-New Zealand,Python3,11
-New Zealand,MySQL,10
-New Zealand,Java,8
+New Zealand,C++,14
+New Zealand,Python3,13
+New Zealand,MySQL,11
+New Zealand,Java,10
+New Zealand,Python,8
 New Zealand,JavaScript,8
-New Zealand,Python,7
-New Zealand,Rust,4
 New Zealand,TypeScript,4
-New Zealand,Go,4
 New Zealand,C,4
+New Zealand,C#,4
+New Zealand,Go,4
+New Zealand,Rust,4
 New Zealand,Bash,3
-New Zealand,C#,3
+New Zealand,Scala,2
 New Zealand,Swift,2
 New Zealand,Kotlin,2
 New Zealand,PHP,2
+New Zealand,Ruby,2
 New Zealand,MS SQL Server,1
 New Zealand,Dart,1
 New Zealand,Pandas,1
-New Zealand,Scala,1
-New Zealand,Ruby,1
-Nigeria,Python3,5
+Nigeria,Python3,6
+Nigeria,Python,4
 Nigeria,Java,4
 Nigeria,C++,4
-Nigeria,Python,3
 Nigeria,Go,2
 Nigeria,TypeScript,2
-Nigeria,MySQL,1
-Nigeria,Bash,1
-Nigeria,C#,1
 Nigeria,JavaScript,1
+Nigeria,C#,1
+Nigeria,Bash,1
+Nigeria,MySQL,1
 Nigeria,Rust,1
 North Korea,Python3,4
 North Korea,C++,3
 North Korea,Python,2
 North Korea,C,1
-North Korea,Go,1
 North Korea,Java,1
-Northern Mariana Islands,C++,1
-Northern Mariana Islands,Java,1
+North Korea,Go,1
 Northern Mariana Islands,Python3,1
 Northern Mariana Islands,C,1
-Norway,C++,5
-Norway,Python3,3
+Northern Mariana Islands,C++,1
+Northern Mariana Islands,Java,1
+Norway,C++,6
+Norway,Python3,4
+Norway,MySQL,2
 Norway,Java,2
+Norway,Rust,1
 Norway,C,1
 Norway,C#,1
-Norway,Rust,1
 Norway,Go,1
 Norway,JavaScript,1
 Norway,MS SQL Server,1
-Norway,MySQL,1
-Not specified,C++,7388
-Not specified,Python3,5488
-Not specified,Java,5105
-Not specified,MySQL,3936
-Not specified,Python,3216
-Not specified,JavaScript,1990
-Not specified,C,1311
-Not specified,Go,735
-Not specified,Bash,627
-Not specified,Pandas,601
-Not specified,C#,478
-Not specified,Rust,408
-Not specified,TypeScript,402
-Not specified,MS SQL Server,278
-Not specified,PostgreSQL,243
-Not specified,Kotlin,237
-Not specified,Oracle,185
-Not specified,Swift,132
-Not specified,Scala,121
-Not specified,Ruby,112
-Not specified,PHP,63
-Not specified,Dart,39
-Not specified,Elixir,17
-Not specified,Racket,17
-Not specified,Erlang,12
-Pakistan,C++,13
-Pakistan,Python3,10
-Pakistan,MySQL,9
-Pakistan,Python,8
-Pakistan,JavaScript,5
-Pakistan,Pandas,5
-Pakistan,Java,4
-Pakistan,C,4
-Pakistan,Bash,3
+Norway,Python,1
+Not specified,C++,12182
+Not specified,Java,9081
+Not specified,Python3,8973
+Not specified,MySQL,6613
+Not specified,Python,5340
+Not specified,JavaScript,3286
+Not specified,C,2401
+Not specified,Go,1000
+Not specified,Pandas,938
+Not specified,Bash,883
+Not specified,C#,788
+Not specified,TypeScript,613
+Not specified,Rust,517
+Not specified,MS SQL Server,471
+Not specified,PostgreSQL,404
+Not specified,Kotlin,330
+Not specified,Oracle,329
+Not specified,Swift,182
+Not specified,Ruby,172
+Not specified,Scala,156
+Not specified,PHP,94
+Not specified,Dart,58
+Not specified,Elixir,20
+Not specified,Racket,19
+Not specified,Erlang,15
+Pakistan,C++,28
+Pakistan,Python3,21
+Pakistan,JavaScript,18
+Pakistan,MySQL,18
+Pakistan,Python,17
+Pakistan,Java,12
+Pakistan,Pandas,6
+Pakistan,C,5
+Pakistan,Go,4
+Pakistan,Bash,4
+Pakistan,TypeScript,3
+Pakistan,C#,3
+Pakistan,PostgreSQL,3
 Pakistan,Ruby,3
-Pakistan,C#,2
-Pakistan,PostgreSQL,2
-Pakistan,TypeScript,1
-Pakistan,Go,1
-Pakistan,MS SQL Server,1
-Pakistan,Oracle,1
-Pakistan,Rust,1
+Pakistan,Rust,3
 Pakistan,Swift,1
-Palau,Python3,1
+Pakistan,MS SQL Server,1
+Pakistan,PHP,1
+Pakistan,Oracle,1
+Palau,Python,1
 Palau,Go,1
+Palau,TypeScript,1
+Palau,Python3,1
 Palau,Java,1
 Palau,MySQL,1
-Palau,Python,1
-Palau,TypeScript,1
-Palestinian Territory,C++,6
-Palestinian Territory,Java,5
-Palestinian Territory,MySQL,4
+Palestinian Territory,C++,7
+Palestinian Territory,Java,6
+Palestinian Territory,MySQL,5
+Palestinian Territory,Python3,4
 Palestinian Territory,TypeScript,3
+Palestinian Territory,Python,3
 Palestinian Territory,JavaScript,3
-Palestinian Territory,Python3,3
+Palestinian Territory,Bash,3
 Palestinian Territory,Swift,2
 Palestinian Territory,Pandas,2
-Palestinian Territory,Python,2
-Palestinian Territory,Bash,2
 Palestinian Territory,Oracle,1
+Palestinian Territory,C,1
+Palestinian Territory,C#,1
+Palestinian Territory,Dart,1
+Palestinian Territory,Erlang,1
+Palestinian Territory,Go,1
+Palestinian Territory,Kotlin,1
 Palestinian Territory,PHP,1
 Palestinian Territory,PostgreSQL,1
 Palestinian Territory,Ruby,1
 Palestinian Territory,Rust,1
-Palestinian Territory,Dart,1
-Palestinian Territory,Go,1
-Palestinian Territory,Erlang,1
-Palestinian Territory,C#,1
-Palestinian Territory,Kotlin,1
-Palestinian Territory,C,1
-Peru,C++,8
+Panama,Java,1
+Panama,Python,1
+Panama,Python3,1
+Panama,C,1
+Peru,C++,9
 Peru,Python,5
 Peru,JavaScript,4
 Peru,Python3,4
+Peru,Java,3
 Peru,C#,3
 Peru,Go,3
-Peru,Java,3
 Peru,TypeScript,2
 Peru,C,2
 Peru,MySQL,2
-Peru,Oracle,1
-Peru,Ruby,1
-Peru,Swift,1
 Peru,MS SQL Server,1
-Philippines,C++,3
-Philippines,Python3,3
-Philippines,MySQL,2
-Philippines,Java,2
-Philippines,Python,1
+Peru,Ruby,1
+Peru,Oracle,1
+Peru,Swift,1
+Philippines,C++,6
+Philippines,Python3,6
+Philippines,C#,5
+Philippines,Java,4
+Philippines,Python,3
+Philippines,C,3
+Philippines,Rust,3
+Philippines,JavaScript,3
+Philippines,MySQL,3
+Philippines,Scala,2
+Philippines,Pandas,2
+Philippines,TypeScript,2
+Philippines,Go,2
+Philippines,Kotlin,2
 Philippines,Bash,1
-Philippines,C,1
-Philippines,C#,1
-Philippines,JavaScript,1
-Philippines,Pandas,1
+Philippines,Dart,1
+Philippines,PHP,1
 Philippines,PostgreSQL,1
-Philippines,Rust,1
-Philippines,TypeScript,1
-Poland,C++,29
-Poland,Python3,26
-Poland,MySQL,21
-Poland,Java,19
-Poland,JavaScript,18
-Poland,Python,14
-Poland,Bash,11
-Poland,Pandas,8
-Poland,TypeScript,7
-Poland,C,6
-Poland,Go,6
-Poland,Rust,5
+Philippines,Ruby,1
+Philippines,Swift,1
+Poland,Python3,30
+Poland,C++,30
+Poland,MySQL,23
+Poland,Java,23
+Poland,JavaScript,22
+Poland,Python,17
+Poland,Bash,12
+Poland,TypeScript,9
+Poland,Pandas,9
+Poland,Go,8
+Poland,C,7
+Poland,Rust,6
 Poland,PostgreSQL,4
+Poland,MS SQL Server,4
+Poland,Kotlin,4
 Poland,C#,4
-Poland,MS SQL Server,3
 Poland,PHP,3
 Poland,Oracle,3
-Poland,Kotlin,3
 Poland,Ruby,1
 Portugal,Java,2
-Portugal,Kotlin,1
-Portugal,Python3,1
 Portugal,C++,1
+Portugal,Python3,1
+Portugal,Kotlin,1
+Puerto Rico,JavaScript,1
 Puerto Rico,MS SQL Server,1
-Puerto Rico,MySQL,1
 Puerto Rico,Python,1
 Puerto Rico,Python3,1
-Puerto Rico,JavaScript,1
+Puerto Rico,MySQL,1
 Puerto Rico,Bash,1
 Puerto Rico,C++,1
 Puerto Rico,Java,1
-Romania,Python3,9
-Romania,C++,9
+Romania,C++,11
+Romania,Python3,11
+Romania,Java,7
 Romania,MySQL,6
-Romania,Java,5
-Romania,Python,5
+Romania,Python,6
 Romania,Bash,4
+Romania,Rust,3
 Romania,C,3
-Romania,C#,2
-Romania,Oracle,2
+Romania,C#,3
+Romania,JavaScript,3
+Romania,Oracle,3
 Romania,TypeScript,2
-Romania,JavaScript,2
-Romania,Rust,2
-Romania,PHP,1
 Romania,Pandas,1
-Russia,Python3,55
-Russia,C++,52
-Russia,MySQL,40
-Russia,Java,34
-Russia,Python,29
-Russia,JavaScript,20
-Russia,Bash,14
-Russia,Go,11
-Russia,PostgreSQL,11
-Russia,Rust,11
-Russia,Pandas,10
-Russia,C#,7
-Russia,TypeScript,6
-Russia,C,6
-Russia,MS SQL Server,3
-Russia,Kotlin,3
-Russia,Oracle,2
-Russia,Scala,2
-Russia,Swift,2
-Russia,Racket,1
+Romania,PHP,1
+Russia,Python3,72
+Russia,C++,71
+Russia,MySQL,53
+Russia,Java,45
+Russia,Python,35
+Russia,JavaScript,27
+Russia,Go,19
+Russia,Bash,16
+Russia,Rust,15
+Russia,Pandas,14
+Russia,PostgreSQL,14
+Russia,C,11
+Russia,TypeScript,9
+Russia,Kotlin,9
+Russia,C#,8
+Russia,MS SQL Server,6
+Russia,Scala,3
+Russia,Oracle,3
+Russia,Swift,3
+Russia,PHP,2
 Russia,Dart,1
+Russia,Racket,1
+Saint Vincent and the Grenadines,C,1
 Saint Vincent and the Grenadines,C++,1
+Saint Vincent and the Grenadines,Bash,1
 Saint Vincent and the Grenadines,JavaScript,1
 Saint Vincent and the Grenadines,MySQL,1
 Saint Vincent and the Grenadines,Python3,1
-Saint Vincent and the Grenadines,C,1
-Saint Vincent and the Grenadines,Bash,1
+Saudi Arabia,C++,2
+Saudi Arabia,Java,2
+Saudi Arabia,Python,2
+Saudi Arabia,Python3,2
+Saudi Arabia,C#,1
 Saudi Arabia,Bash,1
 Saudi Arabia,C,1
-Saudi Arabia,C++,1
+Saudi Arabia,Go,1
 Saudi Arabia,JavaScript,1
 Saudi Arabia,MySQL,1
-Saudi Arabia,Python,1
-Saudi Arabia,Python3,1
 Serbia,Python3,7
 Serbia,C++,6
 Serbia,Java,5
 Serbia,C#,4
+Serbia,Bash,3
 Serbia,MS SQL Server,3
 Serbia,MySQL,3
-Serbia,Bash,3
 Serbia,JavaScript,2
-Serbia,C,2
-Serbia,Kotlin,2
 Serbia,Pandas,2
 Serbia,Python,2
-Serbia,Go,1
+Serbia,C,2
+Serbia,Kotlin,2
 Serbia,Rust,1
 Serbia,Scala,1
 Serbia,Oracle,1
-Singapore,C++,98
-Singapore,Python3,93
-Singapore,MySQL,76
-Singapore,Java,74
-Singapore,Python,61
-Singapore,JavaScript,35
-Singapore,Go,28
-Singapore,C,22
-Singapore,Bash,17
-Singapore,TypeScript,12
-Singapore,MS SQL Server,10
-Singapore,C#,10
-Singapore,Pandas,10
+Serbia,Go,1
+Singapore,C++,107
+Singapore,Python3,103
+Singapore,MySQL,84
+Singapore,Java,83
+Singapore,Python,70
+Singapore,JavaScript,43
+Singapore,Go,31
+Singapore,C,25
+Singapore,Bash,18
+Singapore,TypeScript,13
+Singapore,Pandas,13
+Singapore,C#,12
+Singapore,MS SQL Server,11
 Singapore,PostgreSQL,9
-Singapore,Ruby,7
 Singapore,Rust,7
-Singapore,Swift,3
-Singapore,Kotlin,3
+Singapore,Ruby,7
 Singapore,Scala,3
-Singapore,PHP,1
-Singapore,Dart,1
+Singapore,Kotlin,3
+Singapore,Swift,3
 Singapore,Oracle,1
-Slovakia,Python3,2
-Slovakia,Java,2
-Slovakia,C++,2
+Singapore,Dart,1
+Singapore,PHP,1
+Slovakia,Java,3
+Slovakia,C++,3
 Slovakia,Python,2
+Slovakia,Python3,2
+Slovakia,Kotlin,1
 Slovakia,MySQL,1
 Slovakia,PHP,1
-Slovakia,C,1
-Slovakia,Go,1
-Slovakia,JavaScript,1
-Slovakia,Kotlin,1
-Slovakia,C#,1
 Slovakia,Ruby,1
 Slovakia,Rust,1
 Slovakia,Scala,1
-Slovakia,Swift,1
 Slovakia,TypeScript,1
+Slovakia,C,1
+Slovakia,Swift,1
+Slovakia,C#,1
+Slovakia,Go,1
+Slovakia,JavaScript,1
 Slovenia,Python3,3
+Slovenia,Python,2
+Slovenia,Go,2
 Slovenia,C,2
 Slovenia,C++,2
-Slovenia,Go,2
-Slovenia,Python,2
-Slovenia,Java,1
-Slovenia,MySQL,1
-Slovenia,Dart,1
 Slovenia,Racket,1
-Slovenia,Rust,1
 Slovenia,TypeScript,1
+Slovenia,Rust,1
+Slovenia,Dart,1
+Slovenia,Java,1
 Slovenia,JavaScript,1
+Slovenia,MySQL,1
+Solomon Islands,Python3,1
 South Africa,C++,2
-South Africa,Python3,1
-South Africa,Java,1
 South Africa,MySQL,1
+South Africa,Python3,1
 South Africa,Python,1
-South Korea,Python3,48
-South Korea,C++,46
-South Korea,Python,28
-South Korea,Java,27
-South Korea,MySQL,24
-South Korea,JavaScript,14
-South Korea,Go,11
-South Korea,C,11
-South Korea,Rust,9
-South Korea,Kotlin,8
+South Africa,Java,1
+South Korea,Python3,58
+South Korea,C++,53
+South Korea,Java,40
+South Korea,Python,35
+South Korea,MySQL,28
+South Korea,JavaScript,18
+South Korea,C,12
+South Korea,Go,12
+South Korea,Rust,10
+South Korea,Kotlin,10
+South Korea,Bash,8
+South Korea,TypeScript,7
 South Korea,Pandas,7
-South Korea,Bash,7
-South Korea,TypeScript,6
 South Korea,Swift,5
 South Korea,C#,5
 South Korea,Ruby,4
 South Korea,Scala,3
-South Korea,Oracle,2
+South Korea,PHP,2
 South Korea,MS SQL Server,2
-South Korea,PHP,1
+South Korea,Oracle,2
 South Korea,Racket,1
-Spain,Java,5
-Spain,JavaScript,5
-Spain,MySQL,5
-Spain,Python3,5
+South Korea,Dart,1
+Spain,Java,6
+Spain,Python3,6
+Spain,MySQL,6
 Spain,C++,5
-Spain,Python,4
-Spain,TypeScript,2
-Spain,Go,2
+Spain,JavaScript,5
+Spain,Python,5
+Spain,Go,3
+Spain,C#,2
 Spain,Swift,2
-Spain,PostgreSQL,1
-Spain,Kotlin,1
-Spain,C#,1
+Spain,TypeScript,2
 Spain,Ruby,1
 Spain,Scala,1
-Spain,C,1
+Spain,Kotlin,1
 Spain,MS SQL Server,1
-Sri Lanka,Python3,2
-Sri Lanka,Java,2
-Sri Lanka,MySQL,2
-Sri Lanka,Python,1
-Sweden,Python3,9
-Sweden,C++,8
-Sweden,MySQL,7
-Sweden,Java,6
-Sweden,TypeScript,5
+Spain,PostgreSQL,1
+Spain,C,1
+Sri Lanka,Python3,6
+Sri Lanka,C++,5
+Sri Lanka,Java,4
+Sri Lanka,MySQL,4
+Sri Lanka,Python,3
+Sri Lanka,JavaScript,3
+Sri Lanka,PostgreSQL,1
+Sri Lanka,C,1
+Sri Lanka,Pandas,1
+Sri Lanka,Scala,1
+Sweden,Python3,10
+Sweden,C++,9
+Sweden,Java,8
+Sweden,MySQL,8
 Sweden,JavaScript,5
+Sweden,TypeScript,5
 Sweden,Bash,4
+Sweden,C,4
+Sweden,PostgreSQL,3
 Sweden,Python,3
-Sweden,C,3
 Sweden,Go,3
-Sweden,Pandas,3
 Sweden,Rust,3
-Sweden,PostgreSQL,2
+Sweden,Pandas,3
 Sweden,C#,2
-Sweden,MS SQL Server,1
+Sweden,MS SQL Server,2
+Sweden,Dart,1
 Sweden,Ruby,1
 Sweden,Oracle,1
-Sweden,Dart,1
 Sweden,Kotlin,1
+Switzerland,Java,11
+Switzerland,MySQL,11
 Switzerland,C++,11
 Switzerland,Python3,10
-Switzerland,MySQL,10
-Switzerland,Java,9
-Switzerland,Python,5
+Switzerland,Python,6
 Switzerland,C,4
+Switzerland,PostgreSQL,4
 Switzerland,Pandas,3
-Switzerland,PostgreSQL,3
+Switzerland,Bash,2
 Switzerland,JavaScript,2
 Switzerland,Scala,2
-Switzerland,Rust,1
 Switzerland,C#,1
-Switzerland,Bash,1
+Switzerland,Rust,1
 Switzerland,Go,1
 Syria,C++,4
 Syria,Java,1
 Syria,MySQL,1
 Syria,Python3,1
-Taiwan,C++,431
-Taiwan,Python3,344
-Taiwan,Python,217
-Taiwan,MySQL,204
-Taiwan,Java,196
-Taiwan,C,168
-Taiwan,JavaScript,132
-Taiwan,Go,88
+Taiwan,C++,458
+Taiwan,Python3,370
+Taiwan,Python,233
+Taiwan,MySQL,220
+Taiwan,Java,215
+Taiwan,C,184
+Taiwan,JavaScript,143
+Taiwan,Go,92
 Taiwan,Bash,72
-Taiwan,Pandas,46
-Taiwan,C#,36
-Taiwan,Rust,35
-Taiwan,TypeScript,31
-Taiwan,Kotlin,23
-Taiwan,Ruby,18
+Taiwan,Pandas,51
+Taiwan,C#,37
+Taiwan,Rust,36
+Taiwan,TypeScript,33
+Taiwan,Kotlin,25
+Taiwan,Ruby,20
+Taiwan,Swift,15
 Taiwan,PostgreSQL,13
 Taiwan,MS SQL Server,12
-Taiwan,Swift,12
+Taiwan,PHP,7
 Taiwan,Dart,7
-Taiwan,PHP,6
 Taiwan,Scala,5
-Taiwan,Oracle,3
+Taiwan,Oracle,4
 Taiwan,Elixir,3
 Taiwan,Racket,2
 Taiwan,Erlang,1
-Tajikistan,C++,1
 Tajikistan,Go,1
+Tajikistan,C++,1
 Tajikistan,Java,1
 Tajikistan,Python,1
 Tajikistan,Python3,1
 Tajikistan,Rust,1
-Thailand,Python3,11
-Thailand,MySQL,10
-Thailand,C++,9
-Thailand,Python,8
-Thailand,JavaScript,7
-Thailand,Go,6
-Thailand,Java,6
+Thailand,Python3,14
+Thailand,MySQL,12
+Thailand,C++,11
+Thailand,Python,10
+Thailand,JavaScript,9
+Thailand,Java,8
+Thailand,Go,7
+Thailand,C,5
+Thailand,MS SQL Server,4
 Thailand,Scala,4
-Thailand,C,4
-Thailand,TypeScript,2
-Thailand,MS SQL Server,2
-Thailand,PostgreSQL,2
-Thailand,Kotlin,1
+Thailand,PostgreSQL,3
+Thailand,TypeScript,3
+Thailand,Oracle,2
+Thailand,C#,2
+Thailand,Kotlin,2
+Thailand,Rust,2
+Thailand,Pandas,1
+Thailand,Dart,1
 Thailand,Bash,1
-Thailand,Rust,1
-Thailand,C#,1
+Thailand,PHP,1
+Togo,Python3,2
 Togo,Java,1
-Togo,Python3,1
-Tunisia,C++,3
-Tunisia,Python,2
-Tunisia,JavaScript,2
-Tunisia,MySQL,2
-Tunisia,Python3,1
+Togo,Python,1
+Togo,Bash,1
+Trinidad and Tobago,Kotlin,1
+Trinidad and Tobago,C++,1
+Trinidad and Tobago,Python3,1
+Trinidad and Tobago,Java,1
+Tunisia,C++,6
+Tunisia,MySQL,6
+Tunisia,Python,5
+Tunisia,JavaScript,4
+Tunisia,Python3,4
+Tunisia,Java,4
+Tunisia,C#,2
+Tunisia,TypeScript,2
+Tunisia,Go,1
+Tunisia,Pandas,1
 Tunisia,Bash,1
 Tunisia,C,1
-Tunisia,C#,1
-Tunisia,Go,1
-Tunisia,Java,1
 Tunisia,MS SQL Server,1
-Tunisia,TypeScript,1
-Turkey,Python3,9
-Turkey,C++,8
-Turkey,Java,8
-Turkey,Python,6
-Turkey,JavaScript,4
-Turkey,MySQL,3
-Turkey,C#,3
-Turkey,Bash,2
-Turkey,C,2
+Turkey,Python3,12
+Turkey,C++,11
+Turkey,Java,9
+Turkey,Python,8
+Turkey,JavaScript,5
+Turkey,MySQL,4
+Turkey,C#,4
+Turkey,C,4
 Turkey,Pandas,2
-Turkey,PostgreSQL,1
-Turkey,Kotlin,1
+Turkey,Bash,2
 Turkey,Go,1
+Turkey,Kotlin,1
+Turkey,PostgreSQL,1
 Turkey,Rust,1
 Turkey,Scala,1
 Turkey,TypeScript,1
+Turks and Caicos Islands,C++,1
 Turks and Caicos Islands,Java,1
 Turks and Caicos Islands,MySQL,1
 Turks and Caicos Islands,Python,1
-Turks and Caicos Islands,C++,1
 Turks and Caicos Islands,Python3,1
 U.S. Virgin Islands,C#,1
 U.S. Virgin Islands,C++,1
@@ -1281,158 +1416,168 @@ U.S. Virgin Islands,Rust,1
 U.S. Virgin Islands,Scala,1
 U.S. Virgin Islands,Swift,1
 U.S. Virgin Islands,TypeScript,1
-Uganda,Python3,1
-Uganda,C++,1
+Uganda,C++,2
+Uganda,Java,1
 Uganda,MySQL,1
+Uganda,Python3,1
 Uganda,Python,1
-Ukraine,C++,46
-Ukraine,Python3,37
-Ukraine,Java,34
-Ukraine,MySQL,31
-Ukraine,Python,26
-Ukraine,JavaScript,25
-Ukraine,C#,17
+Ukraine,C++,54
+Ukraine,Python3,41
+Ukraine,Java,38
+Ukraine,MySQL,34
+Ukraine,Python,31
+Ukraine,JavaScript,28
+Ukraine,C#,20
 Ukraine,Bash,12
-Ukraine,MS SQL Server,8
+Ukraine,MS SQL Server,9
 Ukraine,C,8
-Ukraine,Go,7
+Ukraine,Go,8
+Ukraine,Pandas,7
 Ukraine,PostgreSQL,7
-Ukraine,Pandas,6
+Ukraine,Rust,5
 Ukraine,Kotlin,5
 Ukraine,TypeScript,4
 Ukraine,Oracle,4
-Ukraine,Rust,4
 Ukraine,Ruby,3
+Ukraine,PHP,3
+Ukraine,Scala,2
 Ukraine,Swift,2
-Ukraine,PHP,2
 Ukraine,Elixir,1
-Ukraine,Scala,1
-United Arab Emirates,MySQL,3
-United Arab Emirates,Python3,3
-United Arab Emirates,JavaScript,2
-United Arab Emirates,Python,2
-United Arab Emirates,C++,2
-United Arab Emirates,Java,1
-United Arab Emirates,Pandas,1
-United Kingdom,Python3,54
-United Kingdom,C++,49
-United Kingdom,Java,41
-United Kingdom,MySQL,41
-United Kingdom,Python,33
-United Kingdom,JavaScript,17
-United Kingdom,C,13
-United Kingdom,Bash,13
+United Arab Emirates,C++,6
+United Arab Emirates,MySQL,6
+United Arab Emirates,Python3,6
+United Arab Emirates,JavaScript,5
+United Arab Emirates,Python,3
+United Arab Emirates,Pandas,3
+United Arab Emirates,Java,2
+United Arab Emirates,Go,1
+United Arab Emirates,PostgreSQL,1
+United Arab Emirates,Swift,1
+United Arab Emirates,Bash,1
+United Kingdom,Python3,73
+United Kingdom,C++,65
+United Kingdom,Java,56
+United Kingdom,MySQL,53
+United Kingdom,Python,45
+United Kingdom,JavaScript,23
+United Kingdom,C,17
+United Kingdom,Bash,16
+United Kingdom,Go,16
+United Kingdom,Pandas,13
+United Kingdom,Kotlin,11
 United Kingdom,Rust,10
-United Kingdom,Go,10
-United Kingdom,Pandas,10
-United Kingdom,Kotlin,8
-United Kingdom,C#,7
-United Kingdom,TypeScript,5
-United Kingdom,Scala,3
-United Kingdom,MS SQL Server,3
+United Kingdom,TypeScript,9
+United Kingdom,C#,8
+United Kingdom,MS SQL Server,6
+United Kingdom,Oracle,5
+United Kingdom,Scala,4
 United Kingdom,Ruby,2
-United Kingdom,Oracle,2
 United Kingdom,Swift,2
-United Kingdom,PHP,1
-United Kingdom,Elixir,1
+United Kingdom,PHP,2
+United Kingdom,Dart,1
 United Kingdom,Erlang,1
+United Kingdom,Elixir,1
 United Kingdom,PostgreSQL,1
-United States,Python3,1458
-United States,C++,1395
-United States,Java,1380
-United States,Python,1162
-United States,MySQL,1075
-United States,JavaScript,530
-United States,Bash,353
-United States,C,300
-United States,Go,253
-United States,Pandas,208
-United States,C#,166
-United States,TypeScript,147
-United States,MS SQL Server,143
-United States,Rust,125
-United States,Kotlin,85
-United States,Oracle,67
-United States,Scala,64
-United States,Ruby,64
-United States,PostgreSQL,62
-United States,Swift,52
-United States,PHP,25
-United States,Dart,18
-United States,Racket,13
+United States,Python3,1879
+United States,Java,1842
+United States,C++,1740
+United States,Python,1496
+United States,MySQL,1426
+United States,JavaScript,701
+United States,Bash,420
+United States,C,385
+United States,Go,299
+United States,Pandas,263
+United States,C#,228
+United States,MS SQL Server,182
+United States,TypeScript,177
+United States,Rust,136
+United States,Kotlin,96
+United States,Oracle,83
+United States,PostgreSQL,81
+United States,Ruby,81
+United States,Scala,75
+United States,Swift,69
+United States,PHP,27
+United States,Dart,20
+United States,Racket,14
 United States,Elixir,9
 United States,Erlang,6
 Uruguay,C,1
-Uruguay,Python3,1
 Uruguay,Java,1
-Uzbekistan,Python3,23
-Uzbekistan,C++,20
-Uzbekistan,MySQL,17
-Uzbekistan,Java,17
-Uzbekistan,JavaScript,13
-Uzbekistan,Python,9
-Uzbekistan,Bash,8
-Uzbekistan,Pandas,8
-Uzbekistan,Go,8
-Uzbekistan,C#,8
-Uzbekistan,PostgreSQL,7
-Uzbekistan,TypeScript,5
-Uzbekistan,C,5
-Uzbekistan,MS SQL Server,4
-Uzbekistan,Rust,4
-Uzbekistan,Oracle,2
-Uzbekistan,Kotlin,2
-Uzbekistan,PHP,1
-Uzbekistan,Elixir,1
+Uruguay,Python3,1
+Uzbekistan,Python3,34
+Uzbekistan,C++,28
+Uzbekistan,MySQL,24
+Uzbekistan,Java,23
+Uzbekistan,JavaScript,23
+Uzbekistan,Go,13
+Uzbekistan,Pandas,12
+Uzbekistan,TypeScript,10
+Uzbekistan,Python,10
+Uzbekistan,Bash,10
+Uzbekistan,PostgreSQL,9
+Uzbekistan,C#,9
+Uzbekistan,C,8
+Uzbekistan,Rust,6
+Uzbekistan,MS SQL Server,5
+Uzbekistan,Kotlin,3
+Uzbekistan,Oracle,3
+Uzbekistan,PHP,2
 Uzbekistan,Swift,1
-Vatican,C,1
+Uzbekistan,Ruby,1
+Uzbekistan,Elixir,1
+Uzbekistan,Dart,1
 Vatican,C++,1
 Vatican,Java,1
+Vatican,C,1
 Vatican,MySQL,1
 Vatican,Python,1
 Vatican,Python3,1
+Venezuela,MySQL,1
 Venezuela,C++,1
 Venezuela,Java,1
-Venezuela,MySQL,1
 Venezuela,Python3,1
-Vietnam,C++,137
-Vietnam,Python3,113
-Vietnam,Java,98
-Vietnam,MySQL,94
-Vietnam,Python,70
-Vietnam,JavaScript,63
-Vietnam,Go,51
-Vietnam,Bash,26
-Vietnam,C,23
-Vietnam,TypeScript,22
-Vietnam,C#,22
-Vietnam,Rust,22
-Vietnam,MS SQL Server,18
+Vietnam,C++,176
+Vietnam,Python3,138
+Vietnam,Java,126
+Vietnam,MySQL,109
+Vietnam,Python,86
+Vietnam,JavaScript,73
+Vietnam,Go,57
+Vietnam,C,30
+Vietnam,Bash,28
+Vietnam,TypeScript,26
+Vietnam,C#,23
+Vietnam,Rust,23
+Vietnam,MS SQL Server,22
+Vietnam,Pandas,19
 Vietnam,Kotlin,17
-Vietnam,Pandas,14
-Vietnam,PostgreSQL,13
+Vietnam,PostgreSQL,14
 Vietnam,Ruby,10
 Vietnam,Scala,9
 Vietnam,PHP,6
 Vietnam,Swift,5
 Vietnam,Oracle,4
-Vietnam,Dart,2
+Vietnam,Dart,3
 Vietnam,Elixir,2
 Vietnam,Erlang,2
 Vietnam,Racket,1
-Wallis and Futuna,MySQL,1
-Wallis and Futuna,Java,1
-Wallis and Futuna,MS SQL Server,1
-Wallis and Futuna,JavaScript,1
-Wallis and Futuna,Python3,1
-Wallis and Futuna,C++,1
+Wallis and Futuna,C++,2
+Wallis and Futuna,MySQL,2
+Wallis and Futuna,Python3,2
+Wallis and Futuna,Java,2
+Wallis and Futuna,JavaScript,2
+Wallis and Futuna,MS SQL Server,2
+Wallis and Futuna,Go,1
+Wallis and Futuna,Python,1
 Western Sahara,Java,2
-Western Sahara,Python3,1
+Western Sahara,MS SQL Server,1
 Western Sahara,Bash,1
 Western Sahara,C,1
-Western Sahara,MS SQL Server,1
 Western Sahara,MySQL,1
 Western Sahara,Oracle,1
+Western Sahara,Python3,1
 Yemen,Bash,1
 Yemen,C++,1
 Yemen,Java,1
@@ -1441,50 +1586,52 @@ Yemen,Python3,1
 Zambia,C#,1
 Zambia,C++,1
 Zambia,Java,1
-Zimbabwe,C++,1
 Zimbabwe,Java,1
-中国,Java,859
-中国,Python3,679
-中国,C++,636
-中国,Python,471
-中国,MySQL,470
-中国,JavaScript,324
-中国,C#,137
-中国,C,133
-中国,Go,101
-中国,Bash,60
-中国,TypeScript,56
-中国,MS SQL Server,50
-中国,Pandas,36
-中国,Swift,35
-中国,Kotlin,30
-中国,Ruby,30
-中国,Rust,27
-中国,Oracle,23
-中国,PostgreSQL,22
-中国,PHP,11
-中国,Scala,10
+Zimbabwe,C++,1
+中国,Java,1171
+中国,Python3,886
+中国,C++,858
+中国,Python,643
+中国,MySQL,629
+中国,JavaScript,429
+中国,C,188
+中国,C#,186
+中国,Go,130
+中国,Bash,88
+中国,TypeScript,82
+中国,MS SQL Server,60
+中国,Pandas,49
+中国,Swift,45
+中国,Kotlin,42
+中国,Ruby,38
+中国,Oracle,34
+中国,Rust,34
+中国,PostgreSQL,28
+中国,PHP,20
+中国,Scala,12
+中国,Dart,4
 中国,Elixir,1
-中国,Dart,1
 佛得角,Python3,1
 佛得角,Python,1
 俄罗斯,JavaScript,1
 俄罗斯,Python3,1
 俄罗斯,Ruby,1
-冰岛,Go,1
 冰岛,Java,1
+冰岛,Go,1
 冰岛,Python3,1
-加拿大,Java,1
+加拿大,Java,2
+加拿大,MySQL,1
 南极洲,Java,1
 南极洲,MySQL,1
 南极洲,Python3,1
+圣诞岛,MySQL,1
 圣诞岛,C,1
 圣诞岛,Java,1
 圣诞岛,JavaScript,1
-圣诞岛,MySQL,1
 圣诞岛,TypeScript,1
-开曼群岛,C++,1
+安道尔,JavaScript,1
 开曼群岛,C,1
+开曼群岛,C++,1
 开曼群岛,Java,1
 开曼群岛,MySQL,1
 开曼群岛,Python3,1
@@ -1494,92 +1641,105 @@ Zimbabwe,Java,1
 新加坡,Python3,2
 新加坡,C++,1
 新加坡,Python,1
-新西兰,Python,1
 新西兰,C++,1
+新西兰,Python,1
 日本,C++,6
 日本,MySQL,4
 日本,Java,3
-日本,C,2
 日本,C#,2
+日本,C,2
 日本,JavaScript,1
 日本,Python,1
-比利时,Python,1
+智利,Java,1
+智利,JavaScript,1
+智利,MS SQL Server,1
+智利,MySQL,1
 比利时,Java,1
+比利时,Python,1
+法国,Java,1
 法国,JavaScript,1
 法国,MySQL,1
-法国,Java,1
 波斯尼亚和黑塞哥维那,Python3,2
-波斯尼亚和黑塞哥维那,C++,1
 波斯尼亚和黑塞哥维那,Bash,1
+波斯尼亚和黑塞哥维那,C++,1
 波斯尼亚和黑塞哥维那,Java,1
 波斯尼亚和黑塞哥维那,MS SQL Server,1
 波斯尼亚和黑塞哥维那,MySQL,1
+海外,Java,2
+海外,C++,1
 海外,C,1
-海外,Java,1
-澳大利亚,Python3,1
-澳大利亚,MySQL,1
+海外,Python3,1
 澳大利亚,Pandas,1
+澳大利亚,MySQL,1
 澳大利亚,PostgreSQL,1
+澳大利亚,Python3,1
 百慕大,Java,1
 百慕大,MySQL,1
-维尔京群岛，美属,Go,1
 维尔京群岛，美属,JavaScript,1
 维尔京群岛，美属,PostgreSQL,1
 维尔京群岛，美属,Python,1
+维尔京群岛，美属,Go,1
 维尔京群岛，美属,Python3,1
-美国,Java,5
+美国,Java,6
+美国,Python3,5
 美国,C++,4
-美国,Python3,4
 美国,C,3
-美国,Python,2
+美国,Python,3
 美国,MySQL,2
 美国,Ruby,1
+美国,Go,1
 英国,Java,1
-蒙古,JavaScript,1
 蒙古,Java,1
-阿塞拜疆,JavaScript,1
+蒙古,JavaScript,1
 阿塞拜疆,Python,1
-阿塞拜疆,Python3,1
-阿塞拜疆,MySQL,1
 阿塞拜疆,Java,1
+阿塞拜疆,JavaScript,1
+阿塞拜疆,MySQL,1
+阿塞拜疆,Python3,1
 阿尔及利亚,C,1
 阿尔巴尼亚,Java,2
-阿尔巴尼亚,Python3,1
 阿尔巴尼亚,PHP,1
 阿尔巴尼亚,Python,1
+阿尔巴尼亚,Python3,1
+阿拉伯联合酋长国,Python,1
+阿拉伯联合酋长国,C,1
+阿拉伯联合酋长国,C++,1
 阿拉伯联合酋长国,Java,1
 阿拉伯联合酋长国,MySQL,1
 阿根廷,Java,2
+阿根廷,Go,1
+阿根廷,JavaScript,1
 阿根廷,Pandas,1
 阿根廷,Python,1
 阿根廷,Python3,1
-阿根廷,Rust,1
-阿根廷,JavaScript,1
 阿根廷,C++,1
-阿根廷,Go,1
-阿鲁巴,Java,2
+阿根廷,Rust,1
+阿鲁巴,Java,3
+阿鲁巴,C++,1
 阿鲁巴,Python3,1
 阿鲁巴,C,1
-,Java,1049
-,Python3,926
-,C++,796
-,Python,637
-,MySQL,560
-,JavaScript,390
-,C,191
-,C#,144
-,Go,106
-,TypeScript,88
-,Bash,74
-,MS SQL Server,67
-,Pandas,44
-,Kotlin,41
-,Oracle,36
-,PostgreSQL,35
-,Ruby,34
-,Rust,32
-,Swift,31
-,PHP,22
-,Scala,11
-,Elixir,3
-,Dart,2
+,Java,1621
+,Python3,1348
+,C++,1187
+,Python,921
+,MySQL,808
+,JavaScript,607
+,C,301
+,C#,224
+,Go,156
+,TypeScript,131
+,Bash,116
+,MS SQL Server,93
+,Pandas,68
+,Kotlin,60
+,PostgreSQL,50
+,Oracle,47
+,Swift,46
+,Ruby,45
+,Rust,43
+,PHP,29
+,Scala,19
+,Dart,8
+,Elixir,4
+,Erlang,1
+,Racket,1
