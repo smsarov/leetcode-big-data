@@ -5,13 +5,13 @@ import time
 
 # --- Configuration ---
 BASE_URL = "http://localhost:3000"
-INPUT_FILE = "users.csv"
-LANGUAGE_STATS_OUTPUT = "language_stats.csv"
-SOLVED_STATS_OUTPUT = "solved_stats.csv"
+INPUT_FILE = "results/users.csv"
+LANGUAGE_STATS_OUTPUT = "results/language_stats2.csv"
+SOLVED_STATS_OUTPUT = "results/solved_stats2.csv"
 MAX_RETRIES = 3
-INITIAL_BACKOFF = 0.1  # seconds
+INITIAL_BACKOFF = 0.05  # seconds
 
-START_INDEX = 29000      # Starting index (0-based) in users.csv
+START_INDEX = 43230      # Starting index (0-based) in users.csv
 PROCESS_COUNT = 84540 # Number of users to process starting from START_INDEX
 THROTTLE_DELAY_SEC = 0.1 # Delay between processing each user to prevent rate limiting
 INITIAL_START_DELAY_SEC = 0 # Delay the start of the entire script by 1 hour (3600 seconds)
