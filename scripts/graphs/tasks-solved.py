@@ -85,30 +85,69 @@ plt.show()
 # =============================================================================
 
 # Определение квантилей для группировки
-quantiles = df_combined['total_solved'].quantile([0.25, 0.5, 0.75, 0.9])
-q1, median, q3, p90 = quantiles.values
+#quantiles = df_combined['total_solved'].quantile([0.25, 0.5, 0.75, 0.9])
+#q1, median, q3, p90 = quantiles.values
 
 # Создание групп пользователей
+#conditions = [
+#    df_combined['total_solved'] <= q1,
+#    (df_combined['total_solved'] > q1) & (df_combined['total_solved'] <= median),
+#    (df_combined['total_solved'] > median) & (df_combined['total_solved'] <= q3),
+#    (df_combined['total_solved'] > q3) & (df_combined['total_solved'] <= p90),
+#    df_combined['total_solved'] > p90
+#]
+
+#groups = [
+#    f'Решено (0-{q1:.0f})',
+#    f'Решено ({q1:.0f}-{median:.0f})',
+#    f'Решено ({median:.0f}-{q3:.0f})',
+#    f'Решено ({q3:.0f}-{p90:.0f})',
+#    f'Решено ({p90:.0f}+)'
+#]
+
+#df_combined['user_group'] = np.select(conditions, groups, default='Не определено')
+#valid_groups = [g for g in groups if g in df_combined['user_group'].unique()]
+#df_filtered = df_combined[df_combined['user_group'].isin(valid_groups)]
+
+
+# Вычисляем децили (10%, 20%, ..., 90%)
+deciles = df_combined['total_solved'].quantile([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9])
+d1, d2, d3, d4, d5, d6, d7, d8, d9 = deciles.values
+
+# Создаем условия для группировки
 conditions = [
-    df_combined['total_solved'] <= q1,
-    (df_combined['total_solved'] > q1) & (df_combined['total_solved'] <= median),
-    (df_combined['total_solved'] > median) & (df_combined['total_solved'] <= q3),
-    (df_combined['total_solved'] > q3) & (df_combined['total_solved'] <= p90),
-    df_combined['total_solved'] > p90
+    df_combined['total_solved'] <= d1,
+    (df_combined['total_solved'] > d1) & (df_combined['total_solved'] <= d2),
+    (df_combined['total_solved'] > d2) & (df_combined['total_solved'] <= d3),
+    (df_combined['total_solved'] > d3) & (df_combined['total_solved'] <= d4),
+    (df_combined['total_solved'] > d4) & (df_combined['total_solved'] <= d5),
+    (df_combined['total_solved'] > d5) & (df_combined['total_solved'] <= d6),
+    (df_combined['total_solved'] > d6) & (df_combined['total_solved'] <= d7),
+    (df_combined['total_solved'] > d7) & (df_combined['total_solved'] <= d8),
+    (df_combined['total_solved'] > d8) & (df_combined['total_solved'] <= d9),
+    df_combined['total_solved'] > d9
 ]
 
+# Формируем названия групп
 groups = [
-    f'Решено (0-{q1:.0f})',
-    f'Решено ({q1:.0f}-{median:.0f})',
-    f'Решено ({median:.0f}-{q3:.0f})',
-    f'Решено ({q3:.0f}-{p90:.0f})',
-    f'Решено ({p90:.0f}+)'
+    f'Решено (0-{d1:.0f})',
+    f'Решено ({d1:.0f}-{d2:.0f})',
+    f'Решено ({d2:.0f}-{d3:.0f})',
+    f'Решено ({d3:.0f}-{d4:.0f})',
+    f'Решено ({d4:.0f}-{d5:.0f})',
+    f'Решено ({d5:.0f}-{d6:.0f})',
+    f'Решено ({d6:.0f}-{d7:.0f})',
+    f'Решено ({d7:.0f}-{d8:.0f})',
+    f'Решено ({d8:.0f}-{d9:.0f})',
+    f'Решено ({d9:.0f}+)'
 ]
 
+# Присваиваем группы
 df_combined['user_group'] = np.select(conditions, groups, default='Не определено')
+
+# Фильтруем валидные группы
 valid_groups = [g for g in groups if g in df_combined['user_group'].unique()]
 df_filtered = df_combined[df_combined['user_group'].isin(valid_groups)]
-
 # =============================================================================
 # СТАТИСТИКА ПО ГРУППАМ ПОЛЬЗОВАТЕЛЕЙ
 # =============================================================================
@@ -135,7 +174,7 @@ for group in valid_groups:
 # =============================================================================
 
 # 3. Количество решенных и затронутых задач по группам
-fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 10))
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(20, 10))
 x_pos = np.arange(len(valid_groups))
 
 # График решенных задач
@@ -198,11 +237,11 @@ ax2.set_xticklabels(x_labels, rotation=0)
 ax2.legend(title='Сложность')
 
 plt.tight_layout()
-plt.savefig(f'{graph_dir}/3_активность_по_группам.png', dpi=300, bbox_inches='tight')
+plt.savefig(f'{graph_dir}/3_10_активность_по_группам.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # 4. Процентное соотношение по группам
-fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 12))
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(20, 12))
 
 # Проценты решенных задач
 solved_percentages = group_stats_solved.div(group_stats_solved.sum(axis=1), axis=0) * 100
@@ -265,7 +304,7 @@ ax1.set_xticklabels(x_labels, rotation=0)
 ax2.set_xticklabels(x_labels, rotation=0)
 
 plt.tight_layout()
-plt.savefig(f'{graph_dir}/4_процентное_соотношение_по_группам.png', dpi=300, bbox_inches='tight')
+plt.savefig(f'{graph_dir}/4_10_процентное_соотношение_по_группам.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # =============================================================================
@@ -281,7 +320,7 @@ sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', center=0,
             square=True, linewidths=0.5, cbar_kws={'shrink': 0.8})
 plt.title('Корреляция между метриками продуктивности', fontsize=14, fontweight='bold')
 plt.tight_layout()
-plt.savefig(f'{graph_dir}/5_матрица_корреляций.png', dpi=300, bbox_inches='tight')
+plt.savefig(f'{graph_dir}/5_10_матрица_корреляций.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # =============================================================================
@@ -303,7 +342,7 @@ plt.xlabel("Количество решенных задач")
 plt.ylabel("Количество пользователей")
 plt.legend()
 plt.grid(alpha=0.3)
-plt.savefig(f'{graph_dir}/6_распределение_решенных_задач.png', dpi=300, bbox_inches='tight')
+plt.savefig(f'{graph_dir}/6_10_распределение_решенных_задач.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # 7. Распределение успешности решений
@@ -322,12 +361,15 @@ plt.ylabel("Количество пользователей")
 plt.xlim(0, 100)
 plt.legend()
 plt.grid(alpha=0.3)
-plt.savefig(f'{graph_dir}/7_распределение_успешности.png', dpi=300, bbox_inches='tight')
+plt.savefig(f'{graph_dir}/7_10_распределение_успешности.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # 8. Зависимость успешности от опыта
 plt.figure(figsize=(14, 8))
-group_colors = ['#808080', '#90EE90', '#FFB6C1', '#87CEEB', '#FFA500']
+group_colors = [
+    '#FF9E9E', '#A0E7E5', '#B5EAD7', '#FFDAC1', '#C7CEEA',
+    '#F8B195', '#F67280', '#C06C84', '#6C5B7B', '#355C7D'
+]
 
 for i, group in enumerate(valid_groups):
     group_data = df_filtered[df_filtered['user_group'] == group]
@@ -339,9 +381,39 @@ plt.xlabel("Общее количество решенных задач")
 plt.ylabel("Процент успешных решений (%)")
 plt.legend(title="Группы пользователей")
 plt.grid(alpha=0.3)
-plt.savefig(f'{graph_dir}/8_успешность_vs_опыт.png', dpi=300, bbox_inches='tight')
+plt.savefig(f'{graph_dir}/8_10_успешность_vs_опыт.png', dpi=300, bbox_inches='tight')
 plt.show()
+plt.figure(figsize=(14, 8))
 
+avg_x = []
+avg_y = []
+
+for i, group in enumerate(valid_groups):
+    group_data = df_filtered[df_filtered['user_group'] == group]
+
+
+
+    # Вычисляем средние значения для группы
+    avg_solved = group_data["total_solved"].mean()
+    avg_success = group_data["success_rate"].mean()
+
+    # Сохраняем средние значения
+    avg_x.append(avg_solved)
+    avg_y.append(avg_success)
+
+    # Рисуем большую точку для среднего значения группы
+
+# Соединяем средние точки линией
+plt.plot(avg_x, avg_y, color='black', linewidth=2.5, linestyle='--',
+         marker='o', markersize=8, alpha=0.8, label='Средние по группам')
+
+plt.title("Зависимость успешности решений от количества решенных задач", fontsize=14, fontweight='bold')
+plt.xlabel("Общее количество решенных задач")
+plt.ylabel("Процент успешных решений (%)")
+plt.legend(title="Группы пользователей")
+plt.grid(alpha=0.3)
+plt.savefig(f'{graph_dir}/8_10_avg_успешность_vs_опыт.png', dpi=300, bbox_inches='tight')
+plt.show()
 # 9. Соотношение Easy и Medium задач
 plt.figure(figsize=(14, 8))
 for i, group in enumerate(valid_groups):
@@ -354,7 +426,7 @@ plt.xlabel("Количество решенных Easy задач")
 plt.ylabel("Количество решенных Medium задач")
 plt.legend(title="Группы пользователей")
 plt.grid(alpha=0.3)
-plt.savefig(f'{graph_dir}/9_соотношение_easy_medium.png', dpi=300, bbox_inches='tight')
+plt.savefig(f'{graph_dir}/9_10_соотношение_easy_medium.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # 10. Соотношение Medium и Hard задач
@@ -369,7 +441,7 @@ plt.xlabel("Количество решенных Medium задач")
 plt.ylabel("Количество решенных Hard задач")
 plt.legend(title="Группы пользователей")
 plt.grid(alpha=0.3)
-plt.savefig(f'{graph_dir}/10_соотношение_medium_hard.png', dpi=300, bbox_inches='tight')
+plt.savefig(f'{graph_dir}/10_10_соотношение_medium_hard.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 
@@ -390,7 +462,7 @@ for p in ax.patches:
 
 plt.grid(axis='y', alpha=0.3)
 plt.tight_layout()
-plt.savefig(f'{graph_dir}/11_распределение_пользователей_по_группам.png', dpi=300, bbox_inches='tight')
+plt.savefig(f'{graph_dir}/11_10_распределение_пользователей_по_группам.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # 12. Средний процент успешности по группам
@@ -412,7 +484,7 @@ for p in ax.patches:
 
 plt.grid(axis='y', alpha=0.3)
 plt.tight_layout()
-plt.savefig(f'{graph_dir}/12_средняя_успешность_по_группам.png', dpi=300, bbox_inches='tight')
+plt.savefig(f'{graph_dir}/12_10_средняя_успешность_по_группам.png', dpi=300, bbox_inches='tight')
 plt.show()
 # =============================================================================
 # ФИНАЛЬНАЯ СТАТИСТИКА
