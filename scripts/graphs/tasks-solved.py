@@ -172,7 +172,170 @@ for group in valid_groups:
 # =============================================================================
 # ВИЗУАЛИЗАЦИЯ СТАТИСТИКИ ГРУПП
 # =============================================================================
+print("=" * 60)
+print("ОБЩАЯ СТАТИСТИКА АНАЛИЗА")
+print("=" * 60)
+print(f"Всего пользователей: {len(df_combined):,}")
+print(f"Всего решенных задач: {df_combined['total_solved'].sum():,}")
+print(f"Средняя успешность: {df_combined['success_rate'].mean():.1f}%")
+print(f"Медианное количество решений: {df_combined['total_solved'].median():.1f}")
 
+print(f"\nРАСПРЕДЕЛЕНИЕ ПО ГРУППАМ:")
+for group in valid_groups:
+    count = len(df_filtered[df_filtered['user_group'] == group])
+    percentage = (count / len(df_filtered)) * 100
+    avg_solved = df_filtered[df_filtered['user_group'] == group]['total_solved'].mean()
+    avg_success= df_filtered[df_filtered['user_group'] == group]['success_rate'].mean()
+    print(f"  {group}: {count} пользователей ({percentage:.1f}%), в среднем {avg_solved:.1f} решений, успешных решений {avg_success:.1f} ")
+
+print(f"\nСТАТИСТИКА ПО СЛОЖНОСТЯМ:")
+print(f"  Easy:   {df_combined['ac_easy'].sum():,} решено")
+print(f"  Medium: {df_combined['ac_medium'].sum():,} решено")
+print(f"  Hard:   {df_combined['ac_hard'].sum():,} решено")
+# =============================================================================
+# УСПЕШНОСТЬ РЕШЕНИЯ ПО СЛОЖНОСТЯМ В КАЖДОЙ ГРУППЕ
+# =============================================================================
+
+# Расчет успешности по сложностям для каждой группы
+group_success_by_difficulty = {}
+
+for group in valid_groups:
+    group_data = df_filtered[df_filtered['user_group'] == group]
+
+    # Расчет успешности для каждого уровня сложности (избегаем деления на ноль)
+    easy_success = (group_data['ac_easy'].sum() / group_data['easy'].sum() * 100) if group_data['easy'].sum() > 0 else 0
+    medium_success = (group_data['ac_medium'].sum() / group_data['medium'].sum() * 100) if group_data[
+                                                                                               'medium'].sum() > 0 else 0
+    hard_success = (group_data['ac_hard'].sum() / group_data['hard'].sum() * 100) if group_data['hard'].sum() > 0 else 0
+
+    group_success_by_difficulty[group] = {
+        'easy': easy_success,
+        'medium': medium_success,
+        'hard': hard_success,
+        'overall': group_info[group]['success_rate']
+    }
+
+# Визуализация успешности по сложностям в группах
+plt.figure(figsize=(14, 10))
+
+# Подготовка данных для графика
+groups = list(group_success_by_difficulty.keys())
+easy_rates = [group_success_by_difficulty[group]['easy'] for group in groups]
+medium_rates = [group_success_by_difficulty[group]['medium'] for group in groups]
+hard_rates = [group_success_by_difficulty[group]['hard'] for group in groups]
+
+# Создание столбчатой диаграммы
+x = np.arange(len(groups))
+width = 0.25
+
+plt.bar(x - width, easy_rates, width, label='Easy', color='#90EE90', alpha=0.9)
+plt.bar(x, medium_rates, width, label='Medium', color='#87CEEB', alpha=0.9)
+plt.bar(x + width, hard_rates, width, label='Hard', color='#FFB6C1', alpha=0.9)
+
+plt.xlabel('Группы пользователей', fontsize=12, fontweight='bold')
+plt.ylabel('Процент успешных решений (%)', fontsize=12, fontweight='bold')
+plt.title('Успешность решения задач по уровням сложности в разных группах пользователей',
+          fontsize=14, fontweight='bold')
+plt.xticks(x, groups, rotation=45, ha='right')
+plt.legend()
+plt.grid(axis='y', alpha=0.3)
+plt.tight_layout()
+
+# Добавление значений на столбцы
+for i, (easy, medium, hard) in enumerate(zip(easy_rates, medium_rates, hard_rates)):
+    plt.text(i - width, easy + 1, f'{easy:.1f}%', ha='center', va='bottom', fontsize=8)
+    plt.text(i, medium + 1, f'{medium:.1f}%', ha='center', va='bottom', fontsize=8)
+    plt.text(i + width, hard + 1, f'{hard:.1f}%', ha='center', va='bottom', fontsize=8)
+
+plt.savefig(f'{graph_dir}/3_успешность_по_сложностям_в_группах.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+# Тепловая карта успешности по группам и сложностям
+plt.figure(figsize=(12, 8))
+
+# Подготовка данных для тепловой карты
+heatmap_data = []
+for group in groups:
+    row = [
+        group_success_by_difficulty[group]['easy'],
+        group_success_by_difficulty[group]['medium'],
+        group_success_by_difficulty[group]['hard'],
+        group_success_by_difficulty[group]['overall']
+    ]
+    heatmap_data.append(row)
+
+heatmap_df = pd.DataFrame(
+    heatmap_data,
+    index=groups,
+    columns=['Easy', 'Medium', 'Hard', 'Overall']
+)
+
+# Создание тепловой карты
+sns.heatmap(heatmap_df, annot=True, fmt='.1f', cmap='YlGnBu',
+            cbar_kws={'label': 'Процент успешных решений (%)'})
+plt.title('Тепловая карта успешности решения задач по группам и сложностям',
+          fontsize=14, fontweight='bold')
+plt.xlabel('Уровень сложности')
+plt.ylabel('Группы пользователей')
+plt.tight_layout()
+plt.savefig(f'{graph_dir}/4_тепловая_карта_успешности.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+# =============================================================================
+# ВЫВОД СТАТИСТИКИ В КОНСОЛЬ
+# =============================================================================
+
+print("\n" + "=" * 80)
+print("УСПЕШНОСТЬ РЕШЕНИЯ ЗАДАЧ ПО СЛОЖНОСТЯМ В ГРУППАХ")
+print("=" * 80)
+
+for group in groups:
+    stats = group_success_by_difficulty[group]
+    print(f"\n{group}:")
+    print(f"  Всего пользователей: {group_info[group]['count']}")
+    print(f"  Easy:   {stats['easy']:.1f}% успешных решений")
+    print(f"  Medium: {stats['medium']:.1f}% успешных решений")
+    print(f"  Hard:   {stats['hard']:.1f}% успешных решений")
+    print(f"  Общая успешность: {stats['overall']:.1f}%")
+
+# Анализ тенденций
+print("\n" + "=" * 80)
+print("АНАЛИЗ ТЕНДЕНЦИЙ")
+print("=" * 80)
+
+# Сравнение успешности между группами
+first_group = groups[0]
+last_group = groups[-1]
+
+print(f"\nСравнение групп '{first_group}' и '{last_group}':")
+
+for difficulty in ['easy', 'medium', 'hard']:
+    first_rate = group_success_by_difficulty[first_group][difficulty]
+    last_rate = group_success_by_difficulty[last_group][difficulty]
+    difference = last_rate - first_rate
+
+    print(f"  {difficulty.capitalize()}: {first_rate:.1f}% → {last_rate:.1f}% "
+          f"({difference:+.1f}%)")
+
+# Анализ эффективности по сложностям
+print(f"\nЭФФЕКТИВНОСТЬ ПО СЛОЖНОСТЯМ ВО ВСЕХ ГРУППАХ:")
+avg_easy = np.mean([group_success_by_difficulty[group]['easy'] for group in groups])
+avg_medium = np.mean([group_success_by_difficulty[group]['medium'] for group in groups])
+avg_hard = np.mean([group_success_by_difficulty[group]['hard'] for group in groups])
+
+print(f"  Средняя успешность Easy:   {avg_easy:.1f}%")
+print(f"  Средняя успешность Medium: {avg_medium:.1f}%")
+print(f"  Средняя успешность Hard:   {avg_hard:.1f}%")
+
+# Нахождение наиболее и наименее успешных групп для каждой сложности
+for difficulty in ['easy', 'medium', 'hard']:
+    rates = [(group, group_success_by_difficulty[group][difficulty]) for group in groups]
+    best_group = max(rates, key=lambda x: x[1])
+    worst_group = min(rates, key=lambda x: x[1])
+
+    print(f"\n  {difficulty.capitalize()}:")
+    print(f"    Лучшая группа: {best_group[0]} ({best_group[1]:.1f}%)")
+    print(f"    Худшая группа: {worst_group[0]} ({worst_group[1]:.1f}%)")
 # 3. Количество решенных и затронутых задач по группам
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(20, 10))
 x_pos = np.arange(len(valid_groups))
@@ -503,7 +666,9 @@ for group in valid_groups:
     count = len(df_filtered[df_filtered['user_group'] == group])
     percentage = (count / len(df_filtered)) * 100
     avg_solved = df_filtered[df_filtered['user_group'] == group]['total_solved'].mean()
-    print(f"  {group}: {count} пользователей ({percentage:.1f}%), в среднем {avg_solved:.1f} решений")
+    avg_success= df_filtered[df_filtered['user_group'] == group]['success_rate'].mean()
+
+    print(f"  {group}: {count} пользователей ({percentage:.1f}%), в среднем {avg_solved:.1f} решений, успешных решений {avg_success:.1f} ")
 
 print(f"\nСТАТИСТИКА ПО СЛОЖНОСТЯМ:")
 print(f"  Easy:   {df_combined['ac_easy'].sum():,} решено")
