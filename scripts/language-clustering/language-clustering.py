@@ -1,22 +1,46 @@
-import pandas as pd
-import numpy as np
+import os
+import warnings
+
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 import seaborn as sns
-from sklearn.preprocessing import StandardScaler, Normalizer
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.metrics import silhouette_score
-import warnings
+from sklearn.preprocessing import Normalizer
 
 warnings.filterwarnings('ignore')
 
 
 # Загрузка данных
-def load_data(file1_path, file2_path):
-    """Загрузка и предобработка данных"""
-    df1 = pd.read_csv(file1_path)
-    df2 = pd.read_csv(file2_path)
-    df = pd.concat([df1, df2], ignore_index=True)
+def load_data(file1_path, file2_path=None):
+    """Загрузка и предобработка данных.
+    Если file2_path не задан или файл отсутствует, используется только file1_path.
+    """
+    try:
+        df1 = pd.read_csv(file1_path)
+    except FileNotFoundError:
+        print(f"Файл с языковой статистикой не найден: {file1_path}")
+        return None
+    except Exception as e:
+        print(f"Ошибка при чтении {file1_path}: {e}")
+        return None
+
+    if file2_path and os.path.exists(file2_path):
+        try:
+            df2 = pd.read_csv(file2_path)
+            df = pd.concat([df1, df2], ignore_index=True)
+        except Exception as e:
+            print(f"Ошибка при чтении {file2_path}, используем только первый файл: {e}")
+            df = df1
+    else:
+        df = df1
+
+    if df.empty:
+        print("Языковая статистика пуста, кластеризация не будет выполнена")
+        return None
+
     print(f"Всего записей: {len(df)}")
     print(f"Уникальных пользователей: {df['username'].nunique()}")
     print(f"Уникальных языков: {df['languageName'].nunique()}")
@@ -335,10 +359,13 @@ def detailed_cluster_analysis(clustered_data, cluster_means, n_clusters):
 
 
 # Основная функция
-def main(file1_path, file2_path):
+def main(file1_path, file2_path=None):
     """Основная функция выполнения кластеризации"""
     print("ЗАГРУЗКА ДАННЫХ...")
     df = load_data(file1_path, file2_path)
+    if df is None or df.empty:
+        print("Нет данных для кластеризации, завершение работы модуля language-clustering")
+        return None, None, None
 
     print("\nПОДГОТОВКА МАТРИЦЫ ПОЛЬЗОВАТЕЛЬ-ЯЗЫК...")
     user_language = create_user_language_matrix(df)
@@ -369,22 +396,36 @@ def main(file1_path, file2_path):
     detailed_cluster_analysis(clustered_data, cluster_means, optimal_k)
 
     # Сохраняем результаты
-    clustered_data.to_csv('clustered_users_12_languages.csv', index=True)
-    print(f"\nРезультаты сохранены в файл 'clustered_users_12_languages.csv'")
+    out_dir = os.getenv("OUT_DIR")
+    if out_dir:
+        out_path = os.path.join(out_dir, "results", "clustered_users_12_languages.csv")
+    else:
+        out_path = "clustered_users_12_languages.csv"
+    try:
+        os.makedirs(os.path.dirname(out_path), exist_ok=True)
+        clustered_data.to_csv(out_path, index=True)
+        print(f"\nРезультаты сохранены в файл '{out_path}'")
+    except Exception as e:
+        print(f"Не удалось сохранить clustered_users_12_languages.csv: {e}")
 
     return clustered_data, kmeans, cluster_means
 
 
-# Запуск анализа
 if __name__ == "__main__":
-    file1_path = "../../results/language_stats.csv"
-    file2_path = "../../results/language_stats2.csv"
-
     try:
-        results = main(file1_path, file2_path)
-        print("\nАнализ завершен успешно!")
+        base_out = os.getenv("OUT_DIR")
+        if base_out:
+            file1 = os.path.join(base_out, "dataset", "user-data", "language_stats.csv")
+            file2 = os.path.join(base_out, "dataset", "user-data", "language_stats2.csv")
+        else:
+            # Фоллбек для старой структуры / локального запуска
+            file1 = "../../results/language_stats.csv"
+            file2 = "../../results/language_stats2.csv"
+
+        _, _, _ = main(file1, file2 if os.path.exists(file2) else None)
+        print("\nАнализ завершен (language-clustering)")
     except Exception as e:
-        print(f"Произошла ошибка: {e}")
+        print(f"Произошла ошибка при запуске language-clustering: {e}")
         print("Убедитесь, что:")
         print("1. Файл данных существует по указанному пути")
         print("2. Файл имеет правильный формат CSV")

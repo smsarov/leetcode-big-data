@@ -1,21 +1,36 @@
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
 import os
 
-# Создаем папку для сохранения графиков
-graph_dir = '../../results/img/graphs'
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sns
+
+# Базовый каталог вывода (OUT_DIR/dataset, OUT_DIR/results и т.п.)
+OUT_DIR = os.getenv("OUT_DIR")
+if OUT_DIR:
+    base_dir = OUT_DIR
+else:
+    # Фоллбек на структуру репозитория
+    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+
+graph_dir = os.path.join(base_dir, "results", "img", "graphs")
 os.makedirs(graph_dir, exist_ok=True)
 
 # =============================================================================
 # ЗАГРУЗКА И ПРЕДОБРАБОТКА ДАННЫХ
 # =============================================================================
 
-# Загрузка и объединение данных
-df1 = pd.read_csv('../../results/solved_stats.csv')
-df2 = pd.read_csv('../../results/solved_stats2.csv')
-df_combined = pd.concat([df1, df2], ignore_index=True)
+# Загрузка данных
+solved_path = os.path.join(base_dir, "dataset", "user-data", "solved_stats.csv")
+try:
+    df_combined = pd.read_csv(solved_path)
+except FileNotFoundError:
+    print(f"Файл {solved_path} не найден, графики по решённым задачам построены не будут")
+    raise SystemExit(0)
+
+if df_combined.empty:
+    print(f"Файл {solved_path} пуст, графики по решённым задачам построены не будут")
+    raise SystemExit(0)
 
 # Очистка данных
 df_combined = df_combined.drop_duplicates(subset=['username'])

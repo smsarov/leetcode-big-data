@@ -1,20 +1,33 @@
-import requests
+import os
 import csv
-import json
 import time
+import requests
 
-# --- Configuration ---
-BASE_URL = "http://localhost:3000"
-INPUT_FILE = "results/users.csv"
-LANGUAGE_STATS_OUTPUT = "results/language_stats2.csv"
-SOLVED_STATS_OUTPUT = "results/solved_stats2.csv"
+# --- Configuration (значения по умолчанию, могут быть переопределены параметрами/ENV) ---
+BASE_URL = os.getenv("API_BASE_URL", "http://localhost:3000")
+OUT_DIR_ENV = os.getenv("OUT_DIR")
+
+if OUT_DIR_ENV:
+    default_input = os.path.join(OUT_DIR_ENV, "dataset", "users", "users.csv")
+    default_lang_out = os.path.join(OUT_DIR_ENV, "dataset", "user-data", "language_stats.csv")
+    default_solved_out = os.path.join(OUT_DIR_ENV, "dataset", "user-data", "solved_stats.csv")
+else:
+    # Фоллбек на старую структуру
+    default_input = "results/users.csv"
+    default_lang_out = "results/language_stats.csv"
+    default_solved_out = "results/solved_stats.csv"
+
+INPUT_FILE = os.getenv("USERS_INPUT_FILE", default_input)
+LANGUAGE_STATS_OUTPUT = os.getenv("LANGUAGE_STATS_OUTPUT", default_lang_out)
+SOLVED_STATS_OUTPUT = os.getenv("SOLVED_STATS_OUTPUT", default_solved_out)
 MAX_RETRIES = 3
 INITIAL_BACKOFF = 0.05  # seconds
 
-START_INDEX = 43230      # Starting index (0-based) in users.csv
-PROCESS_COUNT = 84540 # Number of users to process starting from START_INDEX
-THROTTLE_DELAY_SEC = 0.1 # Delay between processing each user to prevent rate limiting
-INITIAL_START_DELAY_SEC = 0 # Delay the start of the entire script by 1 hour (3600 seconds)
+START_INDEX = int(os.getenv("START_INDEX", "0"))  # Starting index (0-based) in users.csv
+PROCESS_COUNT = os.getenv("PROCESS_COUNT")  # Number of users to process; None => до конца
+PROCESS_COUNT = int(PROCESS_COUNT) if PROCESS_COUNT is not None else None
+THROTTLE_DELAY_SEC = float(os.getenv("THROTTLE_DELAY_SEC", "0.1"))  # Delay between users
+INITIAL_START_DELAY_SEC = int(os.getenv("INITIAL_START_DELAY_SEC", "0"))  # Global start delay
 
 # --- Helper Functions for API and Robustness ---
 
@@ -114,45 +127,57 @@ def process_user_data(username):
 
 # --- Main Logic ---
 
-def main():
+def main(
+    input_file: str = INPUT_FILE,
+    language_stats_output: str = LANGUAGE_STATS_OUTPUT,
+    solved_stats_output: str = SOLVED_STATS_OUTPUT,
+    base_url: str = BASE_URL,
+    start_index: int = START_INDEX,
+    process_count: int | None = PROCESS_COUNT,
+    throttle_delay_sec: float = THROTTLE_DELAY_SEC,
+    initial_start_delay_sec: int = INITIAL_START_DELAY_SEC,
+):
     """
     Main function to orchestrate the reading, processing, and STREAMING of data 
     into two separate CSV files, applying pagination.
     """
     # Apply initial delay
-    if INITIAL_START_DELAY_SEC > 0:
-        delay_hours = INITIAL_START_DELAY_SEC / 3600
+    if initial_start_delay_sec > 0:
+        delay_hours = initial_start_delay_sec / 3600
         # Calculate when the script will start running
-        start_time = time.time() + INITIAL_START_DELAY_SEC
-        print(f"Delaying script execution by {delay_hours:.2f} hours ({INITIAL_START_DELAY_SEC} seconds).")
+        start_time = time.time() + initial_start_delay_sec
+        print(f"Delaying script execution by {delay_hours:.2f} hours ({initial_start_delay_sec} seconds).")
         print(f"The script is scheduled to start processing at approximately: {time.ctime(start_time)}")
-        time.sleep(INITIAL_START_DELAY_SEC)
+        time.sleep(initial_start_delay_sec)
         print("Delay complete. Starting data processing.")
         
     try:
-        with open(INPUT_FILE, mode='r', newline='', encoding='utf-8') as infile:
+        with open(input_file, mode="r", newline="", encoding="utf-8") as infile:
             reader = csv.DictReader(infile)
             usernames = [row['username'].strip() for row in reader]
     except FileNotFoundError:
-        print(f"Error: Input file '{INPUT_FILE}' not found. Please create it.")
+        print(f"Error: Input file '{input_file}' not found. Please create it.")
         return
 
     # --- Apply Pagination Logic ---
     total_users = len(usernames)
     
-    if START_INDEX >= total_users:
-        print(f"Error: START_INDEX ({START_INDEX}) is beyond the total number of users ({total_users}). Exiting.")
+    if start_index >= total_users:
+        print(f"Error: START_INDEX ({start_index}) is beyond the total number of users ({total_users}). Exiting.")
         return
 
     # Calculate the end index (exclusive)
-    end_index = min(START_INDEX + PROCESS_COUNT, total_users)
+    if process_count is None:
+        end_index = total_users
+    else:
+        end_index = min(start_index + process_count, total_users)
     
     # Slice the list to get the users for the current batch
-    usernames_to_process = usernames[START_INDEX:end_index]
+    usernames_to_process = usernames[start_index:end_index]
     actual_count = len(usernames_to_process)
 
     print(f"Total users found: {total_users}")
-    print(f"Applying pagination: Starting at index {START_INDEX} and processing {actual_count} user(s).")
+    print(f"Applying pagination: Starting at index {start_index} and processing {actual_count} user(s).")
     
     if actual_count == 0:
         print("No users to process based on START_INDEX and PROCESS_COUNT. Exiting.")
@@ -169,12 +194,13 @@ def main():
 
     try:
         # Open both CSV files for writing (once)
-        with open(LANGUAGE_STATS_OUTPUT, mode='a', newline='', encoding='utf-8') as lang_outfile, \
-             open(SOLVED_STATS_OUTPUT, mode='a', newline='', encoding='utf-8') as solved_outfile:
+        # Открываем файлы в режиме перезаписи, чтобы каждый запуск создавал свежие данные
+        with open(language_stats_output, mode="w", newline="", encoding="utf-8") as lang_outfile, \
+             open(solved_stats_output, mode="w", newline="", encoding="utf-8") as solved_outfile:
 
             # Initialize DictWriters
-            lang_writer = csv.DictWriter(lang_outfile, fieldnames=lang_fieldnames, extrasaction='ignore')
-            solved_writer = csv.DictWriter(solved_outfile, fieldnames=solved_fieldnames, extrasaction='ignore')
+            lang_writer = csv.DictWriter(lang_outfile, fieldnames=lang_fieldnames, extrasaction="ignore")
+            solved_writer = csv.DictWriter(solved_outfile, fieldnames=solved_fieldnames, extrasaction="ignore")
 
             # Write headers for both files
             lang_writer.writeheader()
@@ -186,7 +212,15 @@ def main():
                     try: 
                         print(f"Processing data for user: {username}")
                         
-                        lang_records, solved_record = process_user_data(username)
+                        # Локально переопределяем BASE_URL для поддержки параметра base_url
+                        global BASE_URL
+                        old_base_url = BASE_URL
+                        BASE_URL = base_url
+
+                        try:
+                            lang_records, solved_record = process_user_data(username)
+                        finally:
+                            BASE_URL = old_base_url
                         
                         # 1. Write to Language Stats Table (Multi-Row)
                         if lang_records:
@@ -203,18 +237,23 @@ def main():
                         print(f"--> Data written for {username}. Total processed: {processed_count}")
                         
                         # Throttle the process to prevent rate-limiting errors
-                        time.sleep(THROTTLE_DELAY_SEC)
+                        time.sleep(throttle_delay_sec)
                     except Exception as e:
-                        print(f"An error occurred while parsing {username}")
+                        print(f"An error occurred while parsing {username}: {e}")
 
 
     except Exception as e:
-        print("Script finished with unexpected reasons")
+        print(f"Script finished with unexpected reasons: {e}")
 
     print(f"\nProcessing finished. Successfully generated two tables with data for {processed_count} users.")
-    print(f"- Language Stats Table: '{LANGUAGE_STATS_OUTPUT}'")
-    print(f"- Solved Stats Table: '{SOLVED_STATS_OUTPUT}'")
+    print(f"- Language Stats Table: '{language_stats_output}'")
+    print(f"- Solved Stats Table: '{solved_stats_output}'")
 
 
 if __name__ == "__main__":
-    main()
+    # Запуск с параметрами по умолчанию / из ENV
+    try:
+        main()
+    except Exception as e:
+        # Никогда не падаем наружу
+        print(f"Unexpected error in fill-user-info main(): {e}")

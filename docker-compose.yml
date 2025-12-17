@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  api:
+    build: ./api
+    container_name: alfa-leetcode-api
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+
+  pipeline:
+    build: .
+    container_name: leetcode-pipeline
+    depends_on:
+      - api
+    environment:
+      - API_BASE_URL=http://api:3000
+      - OUT_DIR=/data/out
+      - RUN_TEST=${RUN_TEST:-0}
+    volumes:
+      - ./output:/data/out
+    command: ["-out", "/data/out"]
+
+

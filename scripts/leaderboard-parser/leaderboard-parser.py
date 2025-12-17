@@ -1,28 +1,53 @@
-from turtledemo.penrose import start
+import os
+import argparse
+import time
+import re
+
+import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, StaleElementReferenceException
-import time
-import pandas as pd
-import re
 
 
 def setup_driver():
-    """Настройка Chrome драйвера"""
+    """Настройка Chrome драйвера (headless по умолчанию)"""
     chrome_options = Options()
-    # chrome_options.add_argument("--headless")
+    # В продакшене работаем в headless-режиме, но даём возможность отключить через переменную
+    headless = os.getenv("HEADLESS", "1") != "0"
+    if headless:
+        chrome_options.add_argument("--headless=new")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--disable-blink-features=AutomationControlled")
     chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-    chrome_options.add_experimental_option('useAutomationExtension', False)
+    chrome_options.add_experimental_option("useAutomationExtension", False)
     chrome_options.add_argument("--window-size=1920,1080")
+    chrome_options.add_argument("--disable-gpu")
+    # Более человеческий User-Agent, чтобы снизить шанс блокировки
+    chrome_options.add_argument(
+        "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/123.0.0.0 Safari/537.36"
+    )
 
-    driver = webdriver.Chrome(options=chrome_options)
-    driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+    binary_path = os.getenv("CHROME_BINARY")
+    if binary_path:
+        chrome_options.binary_location = binary_path
+
+    # Явно указываем путь к chromedriver, чтобы избежать ошибок Selenium Manager
+    driver_path = os.getenv("CHROMEDRIVER_PATH", "/usr/bin/chromedriver")
+    service = ChromeService(executable_path=driver_path)
+
+    driver = webdriver.Chrome(service=service, options=chrome_options)
+    try:
+        driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+    except Exception:
+        # Если по какой-то причине скрипт не выполнился, это не критично
+        pass
     return driver
 
 
@@ -94,22 +119,28 @@ def parse_user_row(row):
         return None
 
 
-def get_global_ranking(driver, pages_to_scrape=10):
-    """Парсинг глобального рейтинга LeetCode с пагинацией"""
+def get_global_ranking(driver, max_pages: int | None = None):
+    """
+    Парсинг глобального рейтинга LeetCode с пагинацией.
+    Если max_pages is None — идём до тех пор, пока есть страницы.
+    """
     try:
-        start_page= 1
+        start_page = 1
         driver.get(f"https://leetcode.com/contest/globalranking/{start_page}")
 
-        # Ждем загрузки страницы
-        wait = WebDriverWait(driver, 20)
+        # Ждем загрузки страницы (таймаут можно настроить через LEETCODE_WAIT_SEC)
+        wait_seconds = int(os.getenv("LEETCODE_WAIT_SEC", "60"))
+        wait = WebDriverWait(driver, wait_seconds)
         print("Ожидание загрузки страницы...")
         current_page = start_page
-        # Ждем появления данных
-        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "[class*='bg-fill-quaternary']")))
+        # Ждем появления хотя бы одной ссылки на профиль пользователя
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "a[href*='/u/']")))
         time.sleep(3)
 
         all_data = []
-        while current_page <= (start_page+pages_to_scrape):
+        page_counter = 0
+
+        while True:
             print(f"\n=== Парсинг страницы {current_page} ===")
 
             # Ждем загрузки данных на странице
@@ -119,6 +150,7 @@ def get_global_ranking(driver, pages_to_scrape=10):
             try:
                 rows = driver.find_elements(By.CSS_SELECTOR, "[class*='bg-fill-quaternary']")
                 if not rows:
+                    print("Строки с участниками не найдены, выходим из цикла пагинации")
                     break
 
                 # Парсим каждую строку
@@ -126,46 +158,54 @@ def get_global_ranking(driver, pages_to_scrape=10):
                 for i, row in enumerate(rows):
                     user_data = parse_user_row(row)
                     if user_data:
-                        user_data['page'] = current_page
+                        user_data["page"] = current_page
                         all_data.append(user_data)
                         successful_parses += 1
 
                 print(f"Успешно распарсено: {successful_parses}/{len(rows)}")
             except Exception as e:
+                # Ошибку на странице просто логируем и пробуем перейти дальше
                 print(f"Ошибка при парсинге страницы {current_page}: {e}")
+
+            page_counter += 1
+            if max_pages is not None and page_counter >= max_pages:
+                print(f"Достигнут лимит страниц ({max_pages}), прекращаем парсинг")
                 break
 
             # Переход на следующую страницу
-            if current_page < (start_page+pages_to_scrape):
-                try:
-                    # Находим кнопку next
-                    next_button = driver.find_element(By.CSS_SELECTOR, "button[aria-label='next']:not([disabled])")
+            try:
+                next_button = driver.find_element(By.CSS_SELECTOR, "button[aria-label='next']:not([disabled])")
 
-                    if next_button.is_enabled():
-                        print(f"Переход на страницу {current_page + 1}...")
-                        driver.execute_script("arguments[0].click();", next_button)
+                if next_button.is_enabled():
+                    print(f"Переход на страницу {current_page + 1}...")
+                    driver.execute_script("arguments[0].click();", next_button)
 
-                        # Ждем обновления страницы
-                        time.sleep(3)
-                        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "[class*='bg-fill-quaternary']")))
-                        current_page += 1
-                    else:
-                        print("Кнопка next заблокирована")
-                        break
-
-                except NoSuchElementException:
-                    print("Кнопка next не найдена")
+                    # Ждем обновления страницы
+                    time.sleep(3)
+                    wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "[class*='bg-fill-quaternary']")))
+                    current_page += 1
+                    continue
+                else:
+                    print("Кнопка next заблокирована, завершаем парсинг")
                     break
-                except Exception as e:
-                    print(f"Ошибка при переходе на следующую страницу: {e}")
-                    break
-            else:
+
+            except NoSuchElementException:
+                print("Кнопка next не найдена, завершаем парсинг")
+                break
+            except Exception as e:
+                print(f"Ошибка при переходе на следующую страницу: {e}")
                 break
 
         return all_data
 
     except TimeoutException:
         print("Таймаут при загрузке страницы")
+        try:
+            html_preview = driver.page_source[:5000]
+            print("Фрагмент HTML страницы (для отладки):")
+            print(html_preview)
+        except Exception:
+            pass
         return []
     except Exception as e:
         print(f"Ошибка при получении глобального рейтинга: {e}")
@@ -187,28 +227,60 @@ def save_to_csv(data, filename='leetcode_global_ranking.csv'):
     df['global_rank_num'] = pd.to_numeric(df['global_rank'], errors='coerce')
     df = df.sort_values('global_rank_num').drop('global_rank_num', axis=1)
 
-    df.to_csv(filename, index=False, encoding='utf-8')
+    df.to_csv(filename, index=False, encoding="utf-8")
     print(f"Данные сохранены в {filename}")
     print(f"Всего записей: {len(df)}")
     return df
 
 
-def main():
-    driver = setup_driver()
+def run_leaderboard_scrape(output_path: str, max_pages: int | None = None):
+    """
+    Высокоуровневая функция для внешнего использования.
+    Никогда не выбрасывает исключения наружу.
+    """
+    driver = None
     try:
-        ranking_data = get_global_ranking(driver, pages_to_scrape=10)
+        driver = setup_driver()
+        ranking_data = get_global_ranking(driver, max_pages=max_pages)
         if ranking_data:
-            df = save_to_csv(ranking_data)
+            save_to_csv(ranking_data, filename=output_path)
         else:
-            print("Не удалось получить данные")
-
+            print("Не удалось получить данные глобального рейтинга или список пуст")
     except Exception as e:
-        print(f"Произошла ошибка: {e}")
+        print(f"Необработанная ошибка при парсинге глобального рейтинга: {e}")
     finally:
-        input("Нажмите Enter для закрытия браузера...")
-        driver.quit()
-        print("Парсинг завершен")
+        try:
+            if driver is not None:
+                driver.quit()
+        except Exception:
+            pass
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Парсер глобального рейтинга LeetCode."
+    )
+    parser.add_argument(
+        "--output",
+        "-o",
+        dest="output",
+        default="leetcode_global_ranking.csv",
+        help="Путь к CSV-файлу для сохранения результатов",
+    )
+    parser.add_argument(
+        "--max-pages",
+        dest="max_pages",
+        type=int,
+        default=None,
+        help="Максимальное количество страниц для парсинга (по умолчанию без ограничения)",
+    )
+    args = parser.parse_args()
+
+    run_leaderboard_scrape(args.output, max_pages=args.max_pages)
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        print(f"Unexpected error in leaderboard main(): {e}")

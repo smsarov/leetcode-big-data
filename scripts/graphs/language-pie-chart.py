@@ -1,8 +1,27 @@
-import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
+import os
 
-df = pd.read_csv('../../results/popular_languages.csv')
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+# Базовый каталог вывода
+OUT_DIR = os.getenv("OUT_DIR")
+if OUT_DIR:
+    base_dir = OUT_DIR
+else:
+    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+
+popular_path = os.path.join(base_dir, "results", "popular_languages.csv")
+
+try:
+    df = pd.read_csv(popular_path)
+except FileNotFoundError:
+    print(f"Файл {popular_path} не найден, круговая диаграмма языков построена не будет")
+    raise SystemExit(0)
+
+if df.empty:
+    print(f"Файл {popular_path} пуст, круговая диаграмма языков построена не будет")
+    raise SystemExit(0)
 
 
 df = df.sort_values('user_count', ascending=False)
@@ -84,6 +103,14 @@ ax.text(0, 0, f"Всего пользователей:\n{total:,}",
         ha='center', va='center', fontsize=12, fontweight='bold', color='#2C3E50')
 ax.axis('equal')
 plt.tight_layout()
-plt.savefig('language_popularity_detailed.png', dpi=300, bbox_inches='tight',
-            facecolor='white', edgecolor='none')
+output_path = os.path.join(base_dir, "results", "img", "graphs", "language_popularity_detailed.png")
+os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+plt.savefig(
+    output_path,
+    dpi=300,
+    bbox_inches="tight",
+    facecolor="white",
+    edgecolor="none",
+)
 plt.show()

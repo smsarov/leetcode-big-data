@@ -1,43 +1,72 @@
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.preprocessing import StandardScaler
-from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
-from sklearn.linear_model import LinearRegression, Ridge
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+import os
+import sys
 import time
 import warnings
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sns
+from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
+from sklearn.linear_model import LinearRegression, Ridge
+from sklearn.metrics import mean_absolute_error, r2_score
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 
 # Игнорируем предупреждения
 warnings.filterwarnings('ignore')
 
 
-def combine_datasets(file1_path, file2_path):
-    """Объединяет два DataFrame с проверкой дубликатов"""
+def combine_datasets(file1_path, file2_path=None):
+    """Объединяет один или два DataFrame с проверкой дубликатов."""
     try:
         df1 = pd.read_csv(file1_path)
-        df2 = pd.read_csv(file2_path)
-        combined_df = pd.concat([df1, df2], ignore_index=True)
-        print(f"После объединения: {len(combined_df)} пользователей")
-        # Проверяем на дубликаты по username
-        duplicate_usernames = combined_df['username'].duplicated().sum()
-        if duplicate_usernames > 0:
-            print(f"Найдено {duplicate_usernames} дубликатов username!")
-            # Удаляем дубликаты, оставляем первую запись
-            combined_df = combined_df.drop_duplicates(subset=['username'], keep='first')
-            print(f"После удаления дубликатов: {len(combined_df)} пользователей")
-
-        return combined_df
-    except Exception as e:
-        print(f"Ошибка при загрузке файлов: {e}")
+    except FileNotFoundError:
+        print(f"Файл с solved_stats не найден: {file1_path}")
         return None
+    except Exception as e:
+        print(f"Ошибка при загрузке {file1_path}: {e}")
+        return None
+
+    if file2_path and os.path.exists(file2_path):
+        try:
+            df2 = pd.read_csv(file2_path)
+            combined_df = pd.concat([df1, df2], ignore_index=True)
+        except Exception as e:
+            print(f"Ошибка при загрузке {file2_path}, используем только первый файл: {e}")
+            combined_df = df1
+    else:
+        combined_df = df1
+
+    print(f"После объединения: {len(combined_df)} пользователей")
+    # Проверяем на дубликаты по username
+    duplicate_usernames = combined_df["username"].duplicated().sum()
+    if duplicate_usernames > 0:
+        print(f"Найдено {duplicate_usernames} дубликатов username!")
+        # Удаляем дубликаты, оставляем первую запись
+        combined_df = combined_df.drop_duplicates(subset=["username"], keep="first")
+        print(f"После удаления дубликатов: {len(combined_df)} пользователей")
+
+    return combined_df
 
 
 # Объединяем датасеты
 print("=== ОБЪЕДИНЕНИЕ ДАТАСЕТОВ ===")
-df_combined = combine_datasets('../../results/solved_stats.csv', '../../results/solved_stats2.csv')
+
+base_out = os.getenv("OUT_DIR")
+if base_out:
+    file1_default = os.path.join(base_out, "dataset", "user-data", "solved_stats.csv")
+    file2_default = os.path.join(base_out, "dataset", "user-data", "solved_stats2.csv")
+else:
+    # Фоллбек для старой структуры / локального запуска
+    file1_default = "../../results/solved_stats.csv"
+    file2_default = "../../results/solved_stats2.csv"
+
+df_combined = combine_datasets(file1_default, file2_default if os.path.exists(file2_default) else None)
+
+if df_combined is None or df_combined.empty:
+    print("Нет данных solved_stats для обучения модели, скрипт predictional_model завершает работу")
+    sys.exit(0)
 
 def create_features(df):
     """
