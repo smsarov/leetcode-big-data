@@ -88,3 +88,32 @@ fill-csv % python main.py
 1. TODO
 2. TODO
 3. TODO
+
+## Автоматический сбор данных и построение результатов
+
+Для запуска полного пайплайна есть скрипт `run.sh`, который:
+- поднимает локальный API LeetCode в Docker,
+- запускает пайплайн сбора и анализа данных (Selenium + API),
+- записывает артефакты в выбранный каталог (`dataset/`, `results/`).
+
+### Быстрый тест
+
+Из корня репозитория:
+
+chmod +x run.sh
+./run.sh --local --test -out /abs/path/to/output- `--local` — использовать текущую директорию как репозиторий (без `git clone`).
+- `--test` — тестовый режим (ограниченное число страниц рейтинга и пользователей).
+- `-out` — корневой каталог вывода:
+  - `<out>/dataset/users/users.csv`
+  - `<out>/dataset/user-data/language_stats.csv`
+  - `<out>/dataset/user-data/solved_stats.csv`
+  - `<out>/results/*` и `<out>/results/img/graphs/*`.
+
+Переменная `LEETCODE_WAIT_SEC` не обязательна, по умолчанию ожидание = 60 секунд. При медленном соединении можно увеличить, например:
+
+LEETCODE_WAIT_SEC=90 ./run.sh --local --test -out /abs/path/to/output### Полный прогон
+
+./run.sh --local -out /abs/path/to/outputЕсли распространяется только `run.sh`, пользователь может вызвать:
+
+chmod +x run.sh
+./run.sh --test -out /abs/path/to/outputВ этом случае скрипт сам клонирует репозиторий (по `REPO_URL` внутри `run.sh`) и запустит Docker-пайплайн.
